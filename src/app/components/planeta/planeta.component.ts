@@ -27,9 +27,12 @@ document.body.appendChild(renderer.domElement);
 
 const geometry = new three.SphereGeometry(2, 500, 500);
 
-const texture = new three.TextureLoader().load('assets/img/earth.jpg');
+const texture = new three.TextureLoader().load('assets/img/albedo.jpg');
+/* const displacement = new three.TextureLoader().load('assets/img/displacement.jpg');
+const normal = new three.TextureLoader().load('assets/img/normals.jpg');
+const roughness = new three.TextureLoader().load('assets/img/roughness.jpg'); */
 
-const material = new three.MeshStandardMaterial({ map: texture });
+const material = new three.MeshStandardMaterial({ map: texture/* , displacementMap: displacement, normalMap: normal, roughnessMap: roughness  */});
 
 const sphere = new three.Mesh(geometry, material);
 
@@ -44,7 +47,7 @@ camera.rotation.set(0, 0, 0);
 const light = new three.AmbientLight(0xffffff);
 
 const directionalLight = new three.DirectionalLight(0xffffff, 5);
-directionalLight.position.set(-15, 5, 8);
+directionalLight.position.set(-15, 5, 3);
 
 light.add(directionalLight);
 scene.add(light);
@@ -63,21 +66,20 @@ animate();
 const loader = new GLTFLoader();
 
 loader.load(
-  'assets/models/sin_nombre.gltf',
+  'assets/models/texto-rotando.gltf',
   function (gltf) {
     scene.add(gltf.scene);
 
-    gltf.scene.position.x = -1.65;
-    gltf.scene.position.y = -0.2;
-    gltf.scene.position.z = 2.2;
-    gltf.scene.rotation.x = 1.5;
-    gltf.scene.scale.x = 0.4;
-    gltf.scene.scale.y = 0.4;
+    gltf.scene.position.x = 0;
+    gltf.scene.position.y = -0.1;
+    gltf.scene.position.z = 0.9;
+    gltf.scene.rotation.y = -1.2;
 
     function animate() {
       requestAnimationFrame(animate);
       gltf.scene.position.x += 0.0;
       gltf.scene.position.z += 0.0;
+      gltf.scene.rotation.y += -0.0066;
     }
     animate();
   },
