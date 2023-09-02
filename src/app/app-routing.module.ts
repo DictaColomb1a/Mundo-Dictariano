@@ -3,7 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { PlanetaComponent } from './components/planeta/planeta.component';
 
 const routes: Routes = [
-  { path: '', component: PlanetaComponent }
+  {
+    path: '',
+    component: PlanetaComponent
+  }
 ];
 
 @NgModule({

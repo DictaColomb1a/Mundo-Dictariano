@@ -1,0 +1,45 @@
+.p {
+    font-family: "Space Mono", monospace;
+    color: rgb(255, 255, 255);
+    padding-left: 5%;
+    padding-right: 5%;
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    z-index: 100;
+    position: absolute;
+}
+.container{
+    width: 100%;
+    display: flex;
+    float:left;
+}
+.container.sep{
+    /* height: 830px; */
+    height: 100vh;
+}
+.container.cont{
+    height: 100%;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.img{
+    /* width: 400px; */
+    scale: 0.8
+}
+.divjustificado{
+    justify-content: center;
+    align-items: center;
+}
+.divwidth{
+    padding-top: 3%;
+    padding-bottom: 2%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
