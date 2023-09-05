@@ -8,7 +8,7 @@
   display: flex;
 }
 .nav {
-  background: linear-gradient(rgba(180, 180, 180, 0.7) 10%, rgba(0, 0, 0, 0.6));
+  background: linear-gradient(rgba(100, 100, 100, 0.7) 20%, rgba(0, 0, 0, 0.6));
   width: 100%;
   height: 80px;
   display: flex;
