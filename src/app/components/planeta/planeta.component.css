@@ -11,31 +11,35 @@
 .main-container{
     width: 100%;
     z-index: 100;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .container{
     width: 100%;
     display: flex;
-    float:left;
 }
 .container.sep{
     height: 100%;
+    display: flex;
 }
 .container.cont{
     height: 100%;
-    background-image: url("src/assets/img/starsc.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    
     overflow:auto;
 }
-
+.divh2{
+    display:flex;
+    margin:auto;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
 .divimagen{
     width: 100%;
 }
-
 .img{
     width: calc(100%/2);
     height: calc(100%/2);
+    animation: movimiento 5s;
 }
 .divjustificado{
     display:flex;
@@ -50,6 +54,87 @@
 .canvas{
     width: 100%;
     display: flex;
-    float:left;
-    background-image: url("src/assets/img/starsc.jpg");
+    /* background-image: url("src/assets/img/starsc.jpg"); */
+}
+.absolute{
+    display: flex;
+}
+
+.span{
+    display: flex;
+    font-family: "Space Mono",monospace;
+    color: aliceblue;
+    white-space: nowrap;
+    border-right: 4px solid;
+    width: 80ch;
+
+    animation: typing 5s steps(80), blink .2s infinite step-end alternate;
+    overflow: hidden;
+
+}
+    
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+@keyframes typing {
+
+    from { width: 0}
+    
+}
+
+footer{
+    background-color: rgba(100, 100, 100, 1);
+    width: 100%;
+}
+footer .footerp{
+    font-family: "Space Mono",monospace;
+    color: aliceblue;
+    text-align: center;
+}
+footer .footerp.size20{
+    font-size: 20px;
+}
+footer .footerp.size12{
+    font-size: 12px;
+}
+.paddingbot{
+    padding-bottom: 10px;
+}
+
+.hexagon-button {
+    width: 200px; 
+    height: 115px;
+    position: relative;
+    background-color: #F7B300;
+    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
+    clip-path: polygon(
+        25% 20%, /* arriba izquierda */
+        75% 20%, /* arriba derecha */
+        90% 50%,
+        75% 80%, /* abajo derecha */
+        25% 80%, /* abajo izquierda */
+        10% 50%
+        );
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.hexagon-button p {
+    font-family: "Space Mono", monospace;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    margin: 0;
+}
+
+.hexagon-button:hover {
+    background-color: gold;
+}
+.color{
+    background-color: aqua;
 }
