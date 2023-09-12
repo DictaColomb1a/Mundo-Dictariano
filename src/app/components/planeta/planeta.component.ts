@@ -17,10 +17,14 @@ export class PlanetaComponent {
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
+
+  
+ 
   @Input() public rotatioSpeedY: number = 0.005;
   @Input() public size: number = 200;
   @Input() public texturePlanet: string = '/assets/img/mundodic.webp';
-  @Input() public textureStar: string = '/assets/img/estrella.jpg';
+  @Input() public textureStar: string = '/assets/img/estrella.jpg'
+  @Input() public textureText: string = '/assets/img/estrella.jpg'
   @Input() public objeto: string = 'assets/models/texto-rotandom.gltf';
   @Input() public cameraZ: number = 3;
   @Input() public fieldOfView: number = 45;
@@ -34,6 +38,7 @@ export class PlanetaComponent {
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
+ 
 
   private loader = new three.TextureLoader();
   private geometrysphere = new three.SphereGeometry(0.9, 200, 200);
@@ -55,33 +60,89 @@ export class PlanetaComponent {
   }[] = [];
   private starVelocities: three.Vector3[] = [];
 
+  private click(){
+
+    this.sphere.addEventListener('click', function(event){
+      window.location.href='http://www.youtube.com'
+    });
+  }
+
+ 
+  
   private async createScene() {
+
     this.scene = new three.Scene();
     this.scene.add(this.sphere);
     this.scene.add(this.light);
     this.light.position.z = 3;
     this.light.position.y = 1.5;
+    
     let aspectRatio = this.getAspectRatio();
     this.camera = new three.PerspectiveCamera(
+
       this.fieldOfView,
       aspectRatio,
       this.nearClippingPlane,
-      this.farClippingPlane
+      this.farClippingPlane,
+     
     );
-    this.camera.position.z = this.cameraZ;
+
+    if(this.canvas.clientWidth > 950){
+      this.camera.position.z = 3;
+                           
+    }else if(this.canvas.clientWidth <=950 && this.canvas.clientWidth > 400){
+      this.camera.position.z = 5;
+                            
+    }else if (this.canvas.clientWidth <=400){
+      this.camera.position.z =6;
+                            
+    }
+    this.maquinaEscribir(100, ' Anticípate y enséñale a tu hijo a  cómo enfrentar los desafíos de la  era digital.                     ');
   }
 
   private getAspectRatio() {
-    return this.canvas.clientWidth / this.canvas.clientHeight;
+
+    var aspecto = this.canvas.clientWidth / this.canvas.clientHeight;
+    console.log(aspecto);
+   
+    return aspecto;
+    
+  }
+  
+
+
+  private maquinaEscribir = (tiempo: number, text: string)=>{
+
+  let maquina = document.querySelector('#maquina1') as HTMLElement;
+  const characters = text.split('');
+  let i = 0;
+  let escribir = setInterval(function(){
+    if (characters[i] === '*') {
+      maquina.innerHTML += '</br>';
+    } else {
+      maquina.innerHTML += characters[i];
+    }
+
+    if (i === characters.length) {
+      maquina.innerHTML = '';
+      i = 0;
+    }
+
+    i++;
+  }, tiempo);
+
+  console.log(maquina.textContent);
   }
 
   private animationPlanet() {
     this.sphere.rotation.y += this.rotatioSpeedY;
   }
 
+
   private gltfLoader = new GLTFLoader().load(
-    'assets/models/texto-rotandom.gltf',
+    'assets/models/texto-rotandom.gltf', 
     (gltf) => {
+
       const texto = gltf.scene;
 
       gltf.scene.position.x = 0.022;
@@ -109,12 +170,12 @@ export class PlanetaComponent {
     velocity: number;
   } {
     const positionStarX = Math.random() * 10 - 5;
-    const positionStarY = Math.random() * 5 - 2.5;
-    const positionStarZ = Math.floor(Math.random() * 3) - 4;
+    const positionStarY = Math.random() * 6 - 3;
+    const positionStarZ = Math.floor(Math.random() * -5) -2.5;
 
-    const scaleStarX = Math.floor(Math.random() * 1) + 1;
-    const scaleStarY = Math.floor(Math.random() * 1.5) + 0.5;
-    const scaleStarZ = Math.floor(Math.random() * 1) + 1;
+    const scaleStarX = Math.floor(Math.random() * 1.2) + 0.9;
+    const scaleStarY = Math.floor(Math.random() * 1.2) + 0.9;
+    const scaleStarZ = Math.floor(Math.random() * 1.2) + 0.9;
 
     const velocity: number =
       (Math.random() > 0.003 ? 0.003 : -0.003) * (0.003 + Math.random() * 0.003);
@@ -151,8 +212,8 @@ export class PlanetaComponent {
       star.scale.y = originalScale.y + Math.sin(Date.now() * scaleFactor);
       star.position.y += velocity;
 
-      if (star.position.y > 2 || star.position.y < -2) {
-        star.position.y = star.position.y > 2 ? -2 : 2;
+      if (star.position.y > 3 || star.position.y < -3) {
+        star.position.y = star.position.y > 3 ? -3 : 3;
       }
     });
 
@@ -170,6 +231,7 @@ export class PlanetaComponent {
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
 
     this.createStars();
+    this.click();
 
     let component: PlanetaComponent = this;
     (function render() {
@@ -184,4 +246,6 @@ export class PlanetaComponent {
     this.createScene();
     this.startRenderingLoop();
   }
+
+  
 }
