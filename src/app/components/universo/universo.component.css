@@ -1,9 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-*{
-    margin: 0px;
-}
-
-/* .p {
+.p {
     font-family: "Space Mono", monospace;
     color: rgb(255, 255, 255);
     display: flex;
@@ -19,17 +14,14 @@
     background-repeat: no-repeat;
     position: relative;
 }
-
 .canvas{
     width: 100%;
     height: 100%;
     align-items: center;
 }
-
 .divspan{
     padding-top: 7%;
 }
-
 .divboton{
     text-align: center;
     align-items: center;
@@ -37,7 +29,6 @@
     justify-content: center;
     display: flex;
 }
-
 .divpopup{
     text-align: center;
     align-items: center;
@@ -45,36 +36,42 @@
     justify-content: center;
     display: flex;
 }
+    .span{
+        display: inline;
+        font-family: "Space Mono",monospace;
+        font-size: 25px;
+        color: aliceblue;
+        border-right: 4px solid white;
+        margin: 0;
+        animation: blink .3s infinite;
 
-.span{
-    display: inline;
-    font-family: "Space Mono",monospace;
-    font-size: 25px;
-    color: aliceblue;
-    border-right: 4px solid white;
+    }
+    .hexagon-button {
+        
+        background-color: #F7B300;
+        /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
+        clip-path: polygon(
+            25% 25%, /* arriba izquierda */
+            75% 25%, /* arriba derecha */
+            90% 50%,
+            75% 75%, /* abajo derecha */
+            25% 75%, /* abajo izquierda */
+            10% 50%
+            );
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    }
+
+.hexagon-button p {
+    font-family: "Space Mono", monospace;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    padding: 30px;
     margin: 0;
-    animation: blink .3s infinite;
-
 }
-
-.hexagon-button {
-    
-    background-color: #F7B300;
-    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
- /*    clip-path: polygon(
-        25% 25%, /* arriba izquierda */
-  /*       75% 25%, /* arriba derecha */
-  /*       90% 50%,
-        75% 75%, /* abajo derecha */
-  /*       25% 75%, /* abajo izquierda */ /*
-        10% 50%
-        );
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
 @media(max-width: 450px) and (max-height: 950px) {
     .canvas{
         width: 100%;
@@ -134,4 +131,55 @@
     margin-bottom: 3px;
     text-align: center;
     width: max-content;
-    } */
+    }
+.divboton{
+    padding-top: 8.5%;
+}
+.divboton2{
+    padding-top: 0.5%;
+    padding-inline-start: 35px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.divboton3{
+    padding-inline-end: 85px;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}.divboton4{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+}
+.botongalaxia1{
+    background: none;
+    border: none;
+    width: 300px;
+    height: 60px;
+    border-radius: 50%;
+}
+.botongalaxia2{
+    background: none;
+    border: none;
+    width: 350px;
+    height: 90px;
+    border-radius: 50%;
+}
+.botongalaxia3{
+    background: none;
+    border: none;
+    width: 350px;
+    height: 90px;
+    border-radius: 50%;
+}
+.botongalaxia4{
+    background: none;
+    border: none;
+    width: 450px;
+    height: 260px;
+    border-radius: 50%;
+}

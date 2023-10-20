@@ -8,51 +8,33 @@
 
 .main-container{
     width: 100%;
+    height: 100%;
     background-image: url("src/assets/img/starsc.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-}
-.container{
-    width: 100%;
-    display: flex;
-}
-.container.sep{
-    height: 100%;
-    display: flex;
-}
-.container.cont{
-    height: 100%;
-    overflow:auto;
-}
-.divh2{
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 50px;
-    padding-bottom: 400px;
-}
-.divjustificado{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-}
-.div-in-line{
-    display: inline-block;
-    width: 100%;
-    padding-bottom: 10%;
-}
-.divwidth{
-    padding-top: 30%;
-    padding-bottom: 20%;
-    width: 100%;
+    position: relative;
 }
 .canvas{
     width: 100%;
-    display: flex;
-    /* background-image: url("src/assets/img/starsc.jpg"); */
+    height: 100%;
+    align-items: center;
 }
-.absolute{
+.divspan{
+    padding-top: 7%;
+}
+.divboton{
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
     display: flex;
+}
+.divpopup{
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;                               /* 1 parámetro (x / y) */         /* 1 parámetro */
 }
 .span{
     display: inline;
@@ -64,42 +46,16 @@
     animation: blink .3s infinite;
 
 }
-    
-
-@keyframes blink {
-    50% { border-color: transparent }
-}
-
-
-footer{
-    background-color: rgba(100, 100, 100, 1);
-    width: 100%;
-}
-footer .footerp{
-    font-family: "Space Mono",monospace;
-    color: aliceblue;
-    text-align: center;
-}
-footer .footerp.mediano{
-    font-size: 20px;
-}
-footer .footerp.pequeño{
-    font-size: 12px;
-}
-.paddingbot{
-    padding-bottom: 10px;
-}
-
 .hexagon-button {
     
     background-color: #F7B300;
     /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
     clip-path: polygon(
-        25% 20%, /* arriba izquierda */
-        75% 20%, /* arriba derecha */
+        25% 25%, /* arriba izquierda */
+        75% 25%, /* arriba derecha */
         90% 50%,
-        75% 80%, /* abajo derecha */
-        25% 80%, /* abajo izquierda */
+        75% 75%, /* abajo derecha */
+        25% 75%, /* abajo izquierda */
         10% 50%
         );
     cursor: pointer;
@@ -116,29 +72,11 @@ footer .footerp.pequeño{
     padding: 30px;
     margin: 0;
 }
-
-.hexagon-button:hover {
-    background-color: gold;
-}
-.color{
-    background-color: aqua;
-}
-.divfooter{
-    width: calc(100%/3);
-}
-.img{
-    width: calc(100%);
-    height: calc(100%);
-}
-.imgfuego{
-
-    width: calc(40%);
-    height: calc(40%);
-    transform: rotate(180deg);
-
-}
-
 @media(max-width: 450px) and (max-height: 950px) {
+    .canvas{
+        width: 100%;
+        height: 100%;
+    }
     footer .footerp.mediano{
         font-size: 10px;
     }
@@ -169,13 +107,37 @@ footer .footerp.pequeño{
         height: calc(100%);
         animation: movimiento 5s;
     }
-    .canvas {
-        height: 700px;
-    }
+    
     .div-in-line{
         padding-bottom: 50%;
     }
     .divfooter{
         width: 100%;
     }
+}
+.buttonuniverso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+    div#capa{
+    background: linear-gradient(rgba(35, 35, 35, 0.7) 20%, rgba(48, 47, 47, 0.6));
+    color: #ffffff;
+    margin-bottom: 3px;
+    text-align: center;
+    border-radius: 25px;
+    padding: 15px;
+    width: 50%;
+    }
+    
+.divcontext{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 25px;
+    background: linear-gradient(rgba(12, 12, 12, 0.7) 20%, rgba(11, 11, 11, 0.6));
 }

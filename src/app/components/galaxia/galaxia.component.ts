@@ -1,35 +1,34 @@
-import { visitAll } from '@angular/compiler';
-import {
-  Component,
-  ElementRef,
-  Input,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import * as three from 'three';
+import { createRings } from '../galaxia/elipse';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { createPlanets } from '../galaxia/planeta';
+import { SistemaPlanetario } from 'src/app/models/sistema-planetario.model';
+import { SistemaPlanetarioService } from 'src/app/services/sistema-planetario.service';
 
 @Component({
-  selector: 'app-planeta',
-  templateUrl: './planeta.component.html',
-  styleUrls: ['./planeta.component.css'],
+  selector: 'app-universo',
+  templateUrl: './galaxia.component.html',
+  styleUrls: ['./galaxia.component.css'],
 })
-export class PlanetaComponent {
+export class GalaxiaComponent {
+  sistemaPlanetario: SistemaPlanetario = new SistemaPlanetario();
+
+  constructor(
+    private router: Router,
+    private activedRoute: ActivatedRoute,
+    private sistemaPlanetarioService: SistemaPlanetarioService
+  ) {}
+
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
-
-  
- 
-  @Input() public rotatioSpeedY: number = 0.005;
-  @Input() public size: number = 200;
-  @Input() public texturePlanet: string = '/assets/img/mundodic.webp';
-  @Input() public textureStar: string = '/assets/img/estrella.jpg'
-  @Input() public textureText: string = '/assets/img/estrella.jpg'
-  @Input() public objeto: string = 'assets/models/texto-rotandom.gltf';
-  @Input() public cameraZ: number = 3;
   @Input() public fieldOfView: number = 45;
   @Input('nearClipping') public nearClippingPlane: number = 1;
   @Input('farClipping') public farClippingPlane: number = 1000;
+  @Input() public textureStar: string = '/assets/img/estrella.jpg';
 
   private light = new three.SpotLight(0xffffff, 20);
 
@@ -38,18 +37,7 @@ export class PlanetaComponent {
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
- 
-
   private loader = new three.TextureLoader();
-  private geometrysphere = new three.SphereGeometry(0.9, 200, 200);
-  private materialsphere = new three.MeshBasicMaterial({
-    map: this.loader.load(this.texturePlanet),
-  });
-  private sphere: three.Mesh = new three.Mesh(
-    this.geometrysphere,
-    this.materialsphere
-  );
-
   private renderer!: three.WebGLRenderer;
   private scene!: three.Scene;
 
@@ -60,109 +48,58 @@ export class PlanetaComponent {
   }[] = [];
   private starVelocities: three.Vector3[] = [];
 
-  private click(){
+  public enabled = false;
 
-    this.sphere.addEventListener('click', function(event){
-      window.location.href='http://www.youtube.com'
-    });
-  }
-
- 
-  
   private async createScene() {
-
     this.scene = new three.Scene();
-    this.scene.add(this.sphere);
+
+    for (let i = 0; i < createPlanets().length; i++) {
+      this.scene.add(createPlanets()[i]);
+    }
+
+    for (let i = 0; i < createRings().length; i++) {
+      this.scene.add(createRings()[i]);
+    }
+
     this.scene.add(this.light);
     this.light.position.z = 3;
     this.light.position.y = 1.5;
-    
+
     let aspectRatio = this.getAspectRatio();
     this.camera = new three.PerspectiveCamera(
-
       this.fieldOfView,
       aspectRatio,
       this.nearClippingPlane,
-      this.farClippingPlane,
-     
+      this.farClippingPlane
     );
 
-    if(this.canvas.clientWidth > 950){
+    this.camera.position.z = 2.5;
+    this.camera.position.y = 1.2;
+    this.camera.lookAt(0, 0, 0);
+
+    /* if (this.canvas.clientWidth > 950) {
+      this.camera.lookAt(0,0,0);
       this.camera.position.z = 3;
-                           
-    }else if(this.canvas.clientWidth <=950 && this.canvas.clientWidth > 400){
+    } else if (
+      this.canvas.clientWidth <= 950 &&
+      this.canvas.clientWidth > 400
+    ) {
       this.camera.position.z = 5;
-                            
-    }else if (this.canvas.clientWidth <=400){
-      this.camera.position.z =6;
-                            
-    }
-    this.maquinaEscribir(100, ' Anticípate y enséñale a tu hijo a  cómo enfrentar los desafíos de la  era digital.                     ');
+    } else if (this.canvas.clientWidth <= 400) {
+      this.camera.position.z = 6;
+    } */
+    //this.hacerClick();
+    this.maquinaEscribir(
+      100,
+      ' Aprende y enséñale a tu hijo a enfrentarse a diversos riesgos cibernéticos.                     '
+    );
   }
 
   private getAspectRatio() {
-
     var aspecto = this.canvas.clientWidth / this.canvas.clientHeight;
-    console.log(aspecto);
-   
+
     return aspecto;
-    
   }
-  
-
-
-  private maquinaEscribir = (tiempo: number, text: string)=>{
-
-  let maquina = document.querySelector('#maquina1') as HTMLElement;
-  const characters = text.split('');
-  let i = 0;
-  let escribir = setInterval(function(){
-    if (characters[i] === '*') {
-      maquina.innerHTML += '</br>';
-    } else {
-      maquina.innerHTML += characters[i];
-    }
-
-    if (i === characters.length) {
-      maquina.innerHTML = '';
-      i = 0;
-    }
-
-    i++;
-  }, tiempo);
-
-  console.log(maquina.textContent);
-  }
-
-  private animationPlanet() {
-    this.sphere.rotation.y += this.rotatioSpeedY;
-  }
-
-
-  private gltfLoader = new GLTFLoader().load(
-    'assets/models/texto-rotandom.gltf', 
-    (gltf) => {
-
-      const texto = gltf.scene;
-
-      gltf.scene.position.x = 0.022;
-      gltf.scene.position.y = -0.04;
-      gltf.scene.position.z = 0.3;
-      gltf.scene.scale.x = 1;
-      gltf.scene.scale.y = 1;
-      gltf.scene.scale.z = 1;
-
-      this.scene.add(texto);
-
-      function animate() {
-        requestAnimationFrame(animate);
-        gltf.scene.position.x += 0.0;
-        gltf.scene.position.z += 0.0;
-        gltf.scene.rotation.y += -0.005;
-      }
-      animate();
-    }
-  );
 
   private createStar(): {
     star: three.Mesh;
@@ -171,14 +108,15 @@ export class PlanetaComponent {
   } {
     const positionStarX = Math.random() * 10 - 5;
     const positionStarY = Math.random() * 6 - 3;
-    const positionStarZ = Math.floor(Math.random() * -5) -2.5;
+    const positionStarZ = Math.floor(Math.random() * -5) - 2.5;
 
     const scaleStarX = Math.floor(Math.random() * 1.2) + 0.9;
     const scaleStarY = Math.floor(Math.random() * 1.2) + 0.9;
     const scaleStarZ = Math.floor(Math.random() * 1.2) + 0.9;
 
     const velocity: number =
-      (Math.random() > 0.003 ? 0.003 : -0.003) * (0.003 + Math.random() * 0.003);
+      (Math.random() > 0.003 ? 0.003 : -0.003) *
+      (0.003 + Math.random() * 0.003);
 
     const geometryStar = new three.SphereGeometry(0.01, 0.01, 0.01);
     const materialstar = new three.MeshBasicMaterial({
@@ -195,6 +133,25 @@ export class PlanetaComponent {
       velocity,
     };
   }
+  private maquinaEscribir = (tiempo: number, text: string) => {
+    let maquina = document.querySelector('#maquina1') as HTMLElement;
+    const characters = text.split('');
+    let i = 0;
+    let escribir = setInterval(function () {
+      if (characters[i] === '*') {
+        maquina.innerHTML += '</br>';
+      } else {
+        maquina.innerHTML += characters[i];
+      }
+
+      if (i === characters.length) {
+        maquina.innerHTML = '';
+        i = 0;
+      }
+
+      i++;
+    }, tiempo);
+  };
 
   private createStars() {
     const stars = 100;
@@ -225,19 +182,17 @@ export class PlanetaComponent {
     this.renderer = new three.WebGLRenderer({
       canvas: this.canvas,
       alpha: true,
+      antialias: true,
     });
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(devicePixelRatio);
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
 
     this.createStars();
-    this.click();
 
-    let component: PlanetaComponent = this;
+    let component: GalaxiaComponent = this;
     (function render() {
       requestAnimationFrame(render);
-
-      component.animationPlanet();
       component.renderer.render(component.scene, component.camera);
     })();
   }
@@ -245,7 +200,19 @@ export class PlanetaComponent {
   ngAfterViewInit() {
     this.createScene();
     this.startRenderingLoop();
+    this.activedRoute.paramMap.subscribe((params) => {
+      const galaxiaId = params.get('galaxia-id');
+      if (galaxiaId) {
+        this.sistemaPlanetarioService
+          .getByGalaxia(galaxiaId)
+          .subscribe(
+            (sistemaPlanetario) => (this.sistemaPlanetario = sistemaPlanetario)
+          );
+      }
+    });
   }
 
-  
+  showDiv() {
+    this.enabled = !this.enabled;
+  }
 }

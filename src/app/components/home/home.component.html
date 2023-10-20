@@ -10,45 +10,44 @@
     <div class="divwidth">
       <div class="container divjustificado">
         <div class="divh2">
-          <p id="maquina1" class="span"></p>
+          <h2><p id="maquina1" class="span"></p></h2>
         </div>
       </div>
       <div class="container divjustificado">
         <div class="div-in-line">
-            <img id="imagen" src="assets/img/cohete.png" alt="" class="img"/>
-            <div>
-              <img src="assets/img/fuego3.png" alt="" class="imgfuego"/>
-            </div>
-            <p class="p">NIÑOS</p>
-            <div class="divjustificado">
-              <div class="hexagon-button">
-                <p>DESPEGAR</p>
-                </div>
-            </div>
+          <img id="imagen" src="assets/img/cohete.png" alt="" class="img" />
+          <div>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
+          </div>
+          <p class="p">NIÑOS</p>
+          <div class="divjustificado">
+            <button class="hexagon-button" [routerLink]="['/universo']">
+              <p>DESPEGAR</p>
+            </button>
+          </div>
         </div>
         <div class="div-in-line">
           <img src="assets/img/cohete.png" alt="" class="img" />
           <div>
-            <img src="assets/img/fuego3.png" alt="" class="imgfuego"/>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
           </div>
-          <p class="p">ADOLESCENTES</p>
+          <p class="p">JOVENES</p>
           <div class="divjustificado">
-            <div class="hexagon-button">
+            <button class="hexagon-button" [routerLink]="['/galaxia/65319cbe9114dd8ae873cca6']">
               <p>DESPEGAR</p>
-              </div>
+            </button>
           </div>
-          
         </div>
         <div class="div-in-line">
           <img src="assets/img/cohete.png" alt="" class="img" />
           <div>
-            <img src="assets/img/fuego3.png" alt="" class="imgfuego"/>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
           </div>
-          <p class="p">ADULTOS</p>
+          <p class="p">PADRES</p>
           <div class="divjustificado">
-            <div class="hexagon-button">
+            <button class="hexagon-button" [routerLink]="['/universo']">
               <p>DESPEGAR</p>
-              </div>
+            </button>
           </div>
         </div>
       </div>
@@ -59,12 +58,17 @@
       <div class="container divjustificado">
         <div class="divfooter">
           <p class="footerp mediano">Información de la Empresa</p>
-          <p class="footerp pequeño">Dicta Colombia brinda servicios para mejorar
-            la educación en el ámbito de la ciberseguridad en todo el mundo.</p>
+          <p class="footerp pequeño">
+            Dicta Colombia brinda servicios para mejorar la educación en el
+            ámbito de la ciberseguridad en todo el mundo.
+          </p>
         </div>
         <div class="divfooter">
           <p class="footerp mediano">Servicios de la Empresa</p>
-          <p class="footerp pequeño">Cursos online<br><br>Cursos Online <br><br> Cursos Online</p>
+          <p class="footerp pequeño">
+            Cursos online<br /><br />Cursos Online <br /><br />
+            Cursos Online
+          </p>
         </div>
         <div class="divfooter">
           <p class="footerp mediano">Contacto</p>

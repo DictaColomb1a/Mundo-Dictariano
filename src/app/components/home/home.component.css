@@ -1,0 +1,181 @@
+.p {
+    font-family: "Space Mono", monospace;
+    color: rgb(255, 255, 255);
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.container{
+    width: 100%;
+    display: flex;
+}
+.container.sep{
+    height: 100%;
+    display: flex;
+}
+.container.cont{
+    height: 100%;
+    overflow:auto;
+}
+.divh2{
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+    padding-bottom: 400px;
+}
+.divjustificado{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.div-in-line{
+    display: inline-block;
+    width: 100%;
+    padding-bottom: 10%;
+}
+.divwidth{
+    padding-top: 30%;
+    padding-bottom: 20%;
+    width: 100%;
+}
+.canvas{
+    width: 100%;
+    display: flex;
+    /* background-image: url("src/assets/img/starsc.jpg"); */
+}
+.absolute{
+    display: flex;
+}
+.span{
+    display: inline;
+    font-family: "Space Mono",monospace;
+    font-size: 25px;
+    color: aliceblue;
+    border-right: 4px solid white;
+    margin: 0;
+    animation: blink .3s infinite;
+
+}
+    
+
+@keyframes blink {
+    50% { border-color: transparent }
+}
+
+
+footer{
+    background: linear-gradient(rgba(26, 26, 26, 0.6) 20%, rgba(100, 100, 100, 0.7));
+    width: 100%;
+}
+footer .footerp{
+    font-family: "Space Mono",monospace;
+    color: aliceblue;
+    text-align: center;
+}
+footer .footerp.mediano{
+    font-size: 20px;
+}
+footer .footerp.pequeño{
+    font-size: 12px;
+}
+.paddingbot{
+    padding-bottom: 10px;
+}
+
+.hexagon-button {
+    
+    background-color: #F7B300;
+    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
+    clip-path: polygon(
+        25% 20%, /* arriba izquierda */
+        75% 20%, /* arriba derecha */
+        90% 50%,
+        75% 80%, /* abajo derecha */
+        25% 80%, /* abajo izquierda */
+        10% 50%
+        );
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.hexagon-button p {
+    font-family: "Space Mono", monospace;
+    text-align: center;
+    color: black;
+    font-size: 30px;
+    padding: 30px;
+    margin: 0;
+}
+
+.hexagon-button:hover {
+    background-color: gold;
+}
+.color{
+    background-color: aqua;
+}
+.divfooter{
+    width: calc(100%/3);
+}
+.img{
+    width: calc(100%);
+    height: calc(100%);
+}
+.imgfuego{
+
+    width: calc(40%);
+    height: calc(40%);
+    transform: rotate(180deg);
+
+}
+
+@media(max-width: 450px) and (max-height: 950px) {
+    footer .footerp.mediano{
+        font-size: 10px;
+    }
+    footer .footerp.pequeño{
+        font-size: 6px;
+    }
+    .p {
+        font-size: 15px;
+    }
+    .hexagon-button {
+        width: 150px; 
+        height: 70px;
+    }
+    .hexagon-button p {
+        font-size: 15px;
+    }
+    .span {
+        font-size: 15px;
+    }
+    .divjustificado {
+        display: inline-block;
+    }
+    .divh2 {
+        justify-content: center;
+    }
+    .img{
+        width: calc(100%);
+        height: calc(100%);
+        animation: movimiento 5s;
+    }
+    .canvas {
+        height: 700px;
+    }
+    .div-in-line{
+        padding-bottom: 50%;
+    }
+    .divfooter{
+        width: 100%;
+    }
+}

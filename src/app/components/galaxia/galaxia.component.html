@@ -1,0 +1,28 @@
+<div class="main-container">
+  <div class="canvas">
+    <canvas #canvas class="canvas"></canvas>
+  </div>
+  <div class="buttonuniverso">
+    <div class="divspan">
+      <h2><p id="maquina1" class="span"></p></h2>
+    </div>
+    <div class="divboton">
+      <button (click)="showDiv()" class="hexagon-button"><p>CONOCE</p></button>
+    </div>
+    <div class="divpopup">
+      <div *ngIf="enabled" id="capa">
+        <div *ngIf="sistemaPlanetario">
+          <div class="divcontext">
+            <p>{{ sistemaPlanetario.nombre }}</p>
+          </div>
+          <div class="divcontext">
+            <p>{{ sistemaPlanetario.descripcion }}</p>
+          </div>
+        </div>
+        <div class="divboton">
+          <button class="hexagon-button"><p>Primer planeta</p></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
