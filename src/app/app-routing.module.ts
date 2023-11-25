@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UniversoComponent } from './components/universo/universo.component';
 import { GalaxiaComponent } from './components/galaxia/galaxia.component';
+import { PlanetaComponent } from './components/planeta/planeta.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'galaxia/:galaxia-id',
     component: GalaxiaComponent
+  },
+  {
+    path: 'planeta/:sistema-planetario-id',
+    component: PlanetaComponent
   }
   
 ];

@@ -90,35 +90,33 @@ footer .footerp.pequeño{
     padding-bottom: 10px;
 }
 
-.hexagon-button {
-    
-    background-color: #F7B300;
-    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
-    clip-path: polygon(
-        25% 20%, /* arriba izquierda */
-        75% 20%, /* arriba derecha */
-        90% 50%,
-        75% 80%, /* abajo derecha */
-        25% 80%, /* abajo izquierda */
-        10% 50%
-        );
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
+button.supbutton{
+    border: 0;
+    border-radius: 8px;
     display: flex;
+    font-size: 20px;
+    padding: 6px;
+    cursor: pointer;
+    transition: .3s;
 }
-
-.hexagon-button p {
-    font-family: "Space Mono", monospace;
-    text-align: center;
-    color: black;
-    font-size: 30px;
-    padding: 30px;
-    margin: 0;
+span.supbuttonspan{
+    padding: 6px;
+    border-radius: 8px;
+    transition: .3s;
 }
-
-.hexagon-button:hover {
-    background-color: gold;
+button.supbutton:hover span.supbuttonspan{
+    background: none;
+}
+button.supbutton :active{
+    transform: scale(1);
+}
+button.supbutton.accion{
+    background-image: linear-gradient(150deg, rgb(242, 111, 23),#827e7b, rgb(245, 145, 14));
+    color: #fff;
+    
+}
+span.supbuttonspan.accion{
+    background-color: #111 ;
 }
 .color{
     background-color: aqua;

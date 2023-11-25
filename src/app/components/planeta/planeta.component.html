@@ -1,0 +1,120 @@
+<div class="main-container">
+    <div class="canvas">
+      <canvas #canvas class="canvas"></canvas>
+    </div>
+  <div class="buttonuniverso">
+    <div class="divpopup">
+      <div class="capa adultos" *ngIf="planetaInfo">
+          <div class="divcontext adultos">
+            <p>{{ planetaInfo.planeta }}</p>
+          </div>
+          <div class="divcontext adultos">
+            <p>{{ planetaInfo.descripcion }}</p>           
+          </div>
+          <div class="divcontext adultos">
+            <div class="habilidades">
+              <p>PELIGROS</p>
+              <br>
+              <div *ngFor="let atributo of planetaInfo.atributos">
+                <p>{{ atributo.atributo }}</p>
+                <div class="cont45">
+                  <div class="skills css" [style.--nivel.%]="atributo.nivel">{{ atributo.nivel }}%</div>
+                </div>  
+              </div>
+             <!--  <p>Toxicidad</p>
+              <div class="cont45">
+                <div class="skills html">90%</div>
+              </div><br>
+              <p>Radiación</p>
+              <div class="cont45">
+                <div class="skills css">70%</div>
+              </div><br>
+              <p>Ácido</p>
+              <div class="cont45">
+                <div class="skills js">50%</div>
+              </div>               -->
+            </div>
+            <!-- document.documentElement.style.setproperty('--nombreVariable', 'valor'); -->
+                       
+          </div>
+          <div class="divboton">
+            <!-- <button class="hexagon-button3"><p>Primer Planeta</p></button> -->
+            <button class="supbutton adultos"><span class="supbuttonspan adultos">Quiero Aprender</span></button>
+          </div> 
+      </div>
+      <!--
+      <div class="capa jovenes">
+        <div class="divcontext jovenes">
+          <p>nombre</p>
+        </div>
+        <div class="divcontext jovenes">
+          <p>descripcion</p>           
+        </div>
+        <div class="divcontext jovenes">
+          <div class="habilidades">
+            <p>PELIGROS</p>
+            <br>
+            <p>Toxicidad</p>
+            <div class="cont45 jovenes">
+              <div class="skills html jovenes">90%</div>
+            </div><br>
+            <p>Radiación</p>
+            <div class="cont45 jovenes treinta">
+              <div class="skills css jovenes">70%</div>
+            </div><br>
+            <p>Ácido</p>
+            <div class="cont45 jovenes cincuenta">
+              <div class="skills js jovenes">50%</div>
+            </div>              
+          </div>
+                     
+        </div>
+        <div class="divboton">
+          <button class="supbutton jovenes"><span class="supbuttonspan jovenes">Quiero Aprender</span></button>
+        </div> 
+    </div>
+    <div class="capa ninos">
+      <div class="divcontext ninos uno">
+        <p>nombre</p>
+      </div>
+      <div class="divcontext ninos dos">
+        <p>descripcion</p>           
+      </div>
+      <div class="divcontext ninos tres">
+        <p>descripcion</p>           
+      </div>
+      <div class="divcontext ninos">
+        <div class="habilidades">
+          <p>PELIGROS</p>
+          <br>
+          <p>Toxicidad</p>
+          <div class="cont45 ninos">
+            <div class="skills html ninos">90%</div>
+          </div><br>
+          <p>Radiación</p>
+          <div class="cont45 ninos treinta">
+            <div class="skills css ninos">70%</div>
+          </div><br>
+          <p>Ácido</p>
+          <div class="cont45 ninos cincuenta">
+            <div class="skills js ninos">50%</div>
+          </div>              
+        </div>
+                   
+      </div>
+      <div class="divboton">
+        <button class="supbutton ninos"><span class="supbuttonspan ninos">Quiero Aprender</span></button>
+      </div>
+  </div> -->
+      <div  class="flechas">    
+          <div class="divcontext flechaleft">
+              <img src="/assets/img/izquierda.png" alt="" class="imgflecha"> 
+          </div>
+          <div class="divcontext flecharight">
+              <img src="/assets/img/derecha.png" alt="" class="imgflecha">       
+          </div>     
+      </div>
+    </div>
+    
+  </div>
+</div>

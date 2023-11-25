@@ -61,13 +61,12 @@ export function createPlanets(): three.Mesh[] {
     let planet: three.Mesh = new three.Mesh(planeta, material);
 
     planet.position.set(positions[i].x, 0, positions[i].z);
-    planet.rotation.x = 2.2;
     function animate() {
       requestAnimationFrame(animate);
       if (i > 8) {
-        planet.rotation.y += -0.02;
+        planet.rotation.y += -0.003;
       } else {
-        planet.rotation.y += -0.01;
+        planet.rotation.y += -0.001;
       }
     }
     animate();
