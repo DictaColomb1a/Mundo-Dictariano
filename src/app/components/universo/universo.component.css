@@ -35,33 +35,33 @@
     justify-content: center;
     display: flex;
 }
-    .span{
-        display: inline;
-        font-family: "Space Mono",monospace;
-        font-size: 25px;
-        color: aliceblue;
-        border-right: 4px solid white;
-        margin: 0;
-        animation: blink .3s infinite;
+.span{
+    display: inline;
+    font-family: "Space Mono",monospace;
+    font-size: 25px;
+    color: aliceblue;
+    border-right: 4px solid white;
+    margin: 0;
+    animation: blink .3s infinite;
 
-    }
-    .hexagon-button {
-        
-        background-color: #F7B300;
-        /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
-        clip-path: polygon(
-            25% 25%, /* arriba izquierda */
-            75% 25%, /* arriba derecha */
-            90% 50%,
-            75% 75%, /* abajo derecha */
-            25% 75%, /* abajo izquierda */
-            10% 50%
-            );
-        cursor: pointer;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
+}
+.hexagon-button {
+    
+    background-color: #F7B300;
+    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
+    clip-path: polygon(
+        25% 25%, /* arriba izquierda */
+        75% 25%, /* arriba derecha */
+        90% 50%,
+        75% 75%, /* abajo derecha */
+        25% 75%, /* abajo izquierda */
+        10% 50%
+        );
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
 
 .hexagon-button p {
     font-family: "Space Mono", monospace;
@@ -71,10 +71,119 @@
     padding: 30px;
     margin: 0;
 }
-@media(max-width: 450px) and (max-height: 950px) {
+.buttonuniverso{
+    width: 100%;
+    height: max-content;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.divboton{
+    padding-top: 5.5%;
+    display: block;
+}
+.div23{
+    display: flex;
+}
+.divboton2{
+    padding-top: 1.5%;
+    padding-inline-start: 10px;
+    width: 100%;
+    vertical-align: middle;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.divboton3{
+    padding-inline-end: 8px;
+    width: 100%;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}.divboton4{
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+}
+.botongalaxia1{
+    background: none;
+    border: none;
+    width: 300px;
+    height: 130px;
+    border-radius: 50%;
+}.botongalaxia1:hover{
+    font-size: 12;
+    color: aliceblue;
+}
+.pgalaxia1{
+    position: relative;
+    bottom: 50px;
+}
+.botongalaxia2{
+    background: none;
+    display: flex;
+    border: none;
+    width: 350px;
+    height: 90px;
+    justify-content: center;
+    border-radius: 50%;
+}.botongalaxia2:hover{
+    font-size: 12;
+    color: aliceblue;
+}
+.pgalaxia2{
+    position: relative;
+    bottom: 80px;
+}
+.botongalaxia3{
+    display: flex;
+    background: none;
+    border: none;
+    justify-content: center;
+    width: 350px;
+    height: 120px;
+    border-radius: 50%;
+}.botongalaxia3:hover{
+    font-size: 12;
+    color: aliceblue;
+}
+.pgalaxia3{
+    position: relative;
+    bottom: 50px;
+}
+.botongalaxia4{
+    display: flex;
+    justify-content: center;
+    background: none;
+    border: none;
+    width: 350px;
+    height: 190px;
+    border-radius: 50%;
+}.botongalaxia4:hover{
+    font-size: 12;
+    color: aliceblue;
+}
+.pgalaxia4{
+    position: relative;
+    bottom: 70px;
+}
+
+
+@media(max-width: 500px) {
     .canvas{
         width: 100%;
-        height: 100%;
+        height: 1200px;
     }
     footer .footerp.mediano{
         font-size: 10px;
@@ -85,6 +194,16 @@
     .p {
         font-size: 15px;
     }
+    .buttonuniverso{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+    }
     .hexagon-button {
         width: 150px; 
         height: 70px;
@@ -92,11 +211,15 @@
     .hexagon-button p {
         font-size: 15px;
     }
+    .divjustificado {
+        display: inline-block;
+    }
     .span {
         font-size: 15px;
     }
-    .divjustificado {
-        display: inline-block;
+    .divspan{
+        padding-top: 20%;
+        height: 85px;
     }
     .divh2 {
         justify-content: center;
@@ -113,73 +236,67 @@
     .divfooter{
         width: 100%;
     }
-}
-.buttonuniverso{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-}
-    div#capa{
-    background: linear-gradient(rgba(35, 35, 35, 0.7) 20%, rgba(48, 47, 47, 0.6));
-    color: #ffffff;
-    margin-bottom: 3px;
-    text-align: center;
-    width: max-content;
+    .div23{
+        display: flow-root;
     }
-.divboton{
-    padding-top: 8.5%;
+    .divboton{
+        margin-top: 20%;
+    }
+    .divboton2{
+        padding-inline-start: 0;
+        margin-top: 40%;
+        display: flex;
+    }
+    .divboton3{
+        margin-top: 47%;
+        display: flex;
+        padding-inline-end: 0;
+    }.divboton4{
+        margin-top: 40%;
+        display: flex;
+    }
+    .botongalaxia1{
+        background: none;
+        border: none;
+        border-radius: 50%;
+        width: 250px;
+        color: white;
+        height: 100px;
+    }.pgalaxia1{
+        position: relative;
+        bottom: 55px;
+    }
+    .botongalaxia2{
+        background: none;
+        border: none;
+        color: white;
+        width: 250px;
+        height: 100px;
+        border-radius: 50%;
+    }.pgalaxia2{
+        position: relative;
+        bottom: 20px;
+    }
+    .botongalaxia3{
+        background: none;
+        border: none;
+        color: white;
+        width: 250px;
+        height: 100px;
+        border-radius: 50%;
+    }.pgalaxia3{
+        position: relative;
+        bottom: 40px;
+    }
+    .botongalaxia4{
+        background: none;
+        border: none;
+        color: white;
+        width: 250px;
+        height: 100px;
+        border-radius: 50%;
+    }.pgalaxia4{
+        position: relative;
+        bottom: 35px;
+    }
 }
-.divboton2{
-    padding-top: 0.5%;
-    padding-inline-start: 35px;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-}
-.divboton3{
-    padding-inline-end: 85px;
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-}.divboton4{
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-    display: flex;
-}
-.botongalaxia1{
-    background: none;
-    border: none;
-    width: 300px;
-    height: 60px;
-    border-radius: 50%;
-}
-.botongalaxia2{
-    background: none;
-    border: none;
-    width: 350px;
-    height: 90px;
-    border-radius: 50%;
-}
-.botongalaxia3{
-    background: none;
-    border: none;
-    width: 350px;
-    height: 90px;
-    border-radius: 50%;
-}
-.botongalaxia4{
-    background: none;
-    border: none;
-    width: 450px;
-    height: 250px;
-    border-radius: 50%;
-}
-

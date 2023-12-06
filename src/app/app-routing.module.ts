@@ -11,15 +11,15 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
-    path: 'universo',
+    path: 'universo/:categoria-usuario-id',
     component: UniversoComponent
   },
   {
-    path: 'galaxia/:galaxia-id',
+    path: 'galaxia/:galaxia-id/:categoria-usuario-id',
     component: GalaxiaComponent
   },
   {
-    path: 'planeta/:sistema-planetario-id',
+    path: 'planeta/:sistema-planetario-id/:categoria-usuario-id',
     component: PlanetaComponent
   }
   

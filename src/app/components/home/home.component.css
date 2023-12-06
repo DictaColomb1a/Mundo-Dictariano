@@ -99,24 +99,13 @@ button.supbutton{
     cursor: pointer;
     transition: .3s;
 }
-span.supbuttonspan{
-    padding: 6px;
-    border-radius: 8px;
-    transition: .3s;
-}
-button.supbutton:hover span.supbuttonspan{
-    background: none;
-}
 button.supbutton :active{
     transform: scale(1);
 }
-button.supbutton.accion{
-    background-image: linear-gradient(150deg, rgb(242, 111, 23),#827e7b, rgb(245, 145, 14));
-    color: #fff;
+button.supbutton.basico{
+    background-color: rgb(255, 72, 0);
+    color: #000000;
     
-}
-span.supbuttonspan.accion{
-    background-color: #111 ;
 }
 .color{
     background-color: aqua;

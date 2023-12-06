@@ -10,73 +10,80 @@
       <button (click)="showDiv()" class="supbutton basico">¡QUIERO SABER MÁS!</button>  
     </div>
     <div class="divpopup">
-      <div *ngIf="divpopup" class="capa adultos">
-        <div *ngIf="sistemaPlanetario">
-          <div class="divcontext adultos">
-            <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+    
+        <div *ngIf="divpopup && popUpAdultos" class="capa adultos">
+          <div>
+            <div *ngIf="sistemaPlanetario" class="scroll">
+              <div class="divcontext adultos">
+                <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.descripcion }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.reto }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.acierto }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.riesgos }}</p>           
+              </div>
+            </div>
+            <div class="divboton">
+              <button class="supbutton adultos" (click)="linkPlaneta()">PRIMER PLANETA</button>
+            </div>
+
           </div>
-          <div class="divcontext adultos">
-            <p>{{ sistemaPlanetarioInfo.descripcion }}</p>           
-          </div>
-          <div class="divcontext adultos">
-            <p>{{ sistemaPlanetarioInfo.reto }}</p>           
-          </div>
-          <div class="divcontext adultos">
-            <p>{{ sistemaPlanetarioInfo.acierto }}</p>           
-          </div>
-          <div class="divcontext adultos">
-            <p>{{ sistemaPlanetarioInfo.riesgos }}</p>           
-          </div>
-        </div>
-        <div class="divboton">
-          <!-- <button class="hexagon-button3"><p>Primer Planeta</p></button> -->
-          <button class="supbutton adultos" [routerLink]="['/planeta/653810861912629765704cb5a']">PRIMER PLANETA</button>
-        </div>
-      </div>
-      <!-- <div *ngIf="divpopup" class="capa jovenes">
-        <div *ngIf="sistemaPlanetario">
-          <div class="divcontext jovenes">
-            <p>{{ sistemaPlanetario.nombre }}</p>
-          </div>
-          <div class="divcontext jovenes">
-            <p>{{ sistemaPlanetario.descripcion }}</p>           
-          </div>
-        </div>
-        <div class="divboton">
-          <button class="supbutton jovenes">Primer Planeta</button>
-        </div>
-       
-      </div>
-      <div *ngIf="divpopup" class="capa ninos">
-        <div *ngIf="sistemaPlanetario">
-          <div class="divcontext ninos uno">
-            <p>{{ sistemaPlanetario.nombre }}</p>
-          </div>
-          <div class="divcontext ninos dos">
-            <p>{{ sistemaPlanetario.descripcion }}</p>           
-          </div>
-          <div class="divcontext ninos tres">
-            <p>{{ sistemaPlanetario.descripcion }}</p>           
-          </div>
-        </div>
-        <div class="divboton">
-          <button class="supbutton ninos">Primer Planeta</button> 
-        </div>
-      </div>
-      <div class="divfijo" *ngIf="divfijo">
-        <div class="divcontext ninos">
-          <p>{{ sistemaPlanetario.nombre }}</p>
-        </div>
-        <div class="divcontext ninos">
-          <p>{{ sistemaPlanetario.descripcion }}</p>           
-        </div>
-       
-        <div class="divboton">
-          <button class="hexagon-button2"><p>Primer Planeta</p></button>
           
+      
+      </div>
+   
+      
+      
+      <div *ngIf="divpopup && popUpJovenes" class="capa jovenes">
+        <div>
+          <div *ngIf="sistemaPlanetario">
+            <div class="divcontext jovenes">
+              <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.descripcion }}</p>            
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.reto }}</p>           
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.acierto }}</p>           
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.riesgos }}</p>            
+            </div>
+          </div>
+          <div class="divboton">
+            <button class="supbutton jovenes" (click)="linkPlaneta()">Primer Planeta</button>
+          </div>
         </div>
-        
-      </div> -->
+      </div>
+
+      <div *ngIf="divpopup && popUpNinos" class="capa ninos">
+        <div>
+          <div *ngIf="sistemaPlanetario">
+            <div class="divcontext ninos uno">
+              <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+            </div>
+            <div class="divcontext ninos dos">
+              <p>{{ sistemaPlanetarioInfo.descripcion }}</p>          
+            </div>
+            <div class="divcontext ninos tres">
+              <p>{{ sistemaPlanetarioInfo.reto }}</p>            
+            </div>
+          </div>
+          <div class="divboton">
+            <button class="supbutton ninos" (click)="linkPlaneta()">Primer Planeta</button> 
+          </div>
+        </div>       
+      </div>
     </div>
     
   </div>

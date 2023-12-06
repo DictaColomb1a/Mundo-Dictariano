@@ -7,16 +7,19 @@ import { PlanetaService } from 'src/app/services/planeta.service';
 import * as three from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './planeta.component.html',
-  styleUrls: ['./planeta.component.css'], 
+  styleUrls: ['./planeta.component.css'],
 })
 export class PlanetaComponent {
   planetas: Planeta[] = [];
   planetaInfo: PlanetaInfo = new PlanetaInfo();
   index = 0;
+  categoriaUsuarioId = '';
+  popUpNinos = false;
+  popUpJovenes = false;
+  popUpAdultos = false;
 
   constructor(
     private activedRoute: ActivatedRoute,
@@ -59,6 +62,7 @@ export class PlanetaComponent {
   );
 
   private renderer!: three.WebGLRenderer;
+
   private scene!: three.Scene;
 
   private starsArray: {
@@ -69,8 +73,7 @@ export class PlanetaComponent {
   private starVelocities: three.Vector3[] = [];
 
   private async createScene() {
-
-    this.sphere.position.x = 0.84; 
+    this.sphere.position.x = 1.05;
     this.scene = new three.Scene();
     this.scene.add(this.sphere);
     this.scene.add(this.light);
@@ -86,27 +89,17 @@ export class PlanetaComponent {
     );
 
     if (this.canvas.clientWidth > 950) {
-      this.camera.position.z = 3;
-    } else if (
-      this.canvas.clientWidth <950 &&
-      this.canvas.clientWidth > 400
-    ) {
+      this.camera.position.z = 4;
+    } else if (this.canvas.clientWidth < 950 && this.canvas.clientWidth > 400) {
       this.camera.position.z = 5;
     } else if (this.canvas.clientWidth <= 400) {
       this.camera.position.z = 6;
     }
-   /*  this.onWindowResize(); */
   }
 
   private getAspectRatio() {
-    return this.canvas.clientWidth / this.canvas.clientHeight;
+    return 1.90;
   }
-  /* private onWindowResize() {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-} */
-
 
   private animationPlanet() {
     this.sphere.rotation.y += this.rotatioSpeedY;
@@ -190,41 +183,63 @@ export class PlanetaComponent {
     })();
   }
 
+  siguientePlaneta() {
+    if (this.index < this.planetas.length - 1) {
+      this.index = this.index + 1;
+    } else {
+      this.index = 0;
+    }
+    this.cargarInfo();
+  }
+
+  anteriorPlaneta() {
+    if (this.index == 0) {
+      this.index = this.planetas.length - 1;
+    } else if (this.index < this.planetas.length) {
+      this.index = this.index - 1;
+    }
+    this.cargarInfo();
+  }
+
+  cargarInfo() {
+    this.planetaInfoService
+      .getByPlanetaAndCategoriaUsuario(
+        this.planetas[this.index].id,
+        this.categoriaUsuarioId
+      )
+      .subscribe((planetaInfo) => {
+        this.planetaInfo = planetaInfo;
+      });
+  }
+
   ngAfterViewInit() {
+    console.log(this.index);
     this.createScene();
     this.startRenderingLoop();
     this.activedRoute.paramMap.subscribe((params) => {
       const sistemaPlanetarioId = params.get('sistema-planetario-id');
+      this.categoriaUsuarioId = String(params.get('categoria-usuario-id'));
+
+      this.getPopUp();
+
       if (sistemaPlanetarioId) {
         this.planetaService
           .getBySistemaPlanetario(sistemaPlanetarioId)
-          .subscribe(
-            (planetas) => {
-              this.planetas = planetas;
-              console.log('planetas');
-              console.log(this.planetas);
-              this.planetaInfoService
-              .getByPlanetaAndCategoriaUsuario(this.planetas[this.index].id, '653822d9192629765704cb66')
-              .subscribe(
-                (planetaInfo) => {
-                  this.planetaInfo = planetaInfo;
-                  console.log(this.planetaInfo.atributos);
-                }
-              )
-            }
-          );
+          .subscribe((planetas) => {
+            this.planetas = planetas;
+            console.log(this.planetas);
+            this.cargarInfo();
+          });
       }
     });
   }
 
- /*  n = 0;
-  var colores = ['red', 'green', 'blue', 'white', 'orange', 'yellow']; 
-  
-  function cambiaColor() {
-      n++;
-      var root = document.documentElement;
-      root.style.setProperty('--color', colores[n % colores.length]);
-  } */
+  private getPopUp() {
+    this.popUpNinos = this.categoriaUsuarioId === '653822ca192629765704cb64';
+    this.popUpJovenes = this.categoriaUsuarioId === '653822d9192629765704cb66';
+    this.popUpAdultos = this.categoriaUsuarioId === '653822e8192629765704cb68';
+  }
+
   showDiv() {
     if (this.canvas.clientWidth > 950) {
       this.divpopup = !this.divpopup;
@@ -233,4 +248,3 @@ export class PlanetaComponent {
     }
   }
 }
-

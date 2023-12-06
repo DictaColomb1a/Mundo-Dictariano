@@ -19,6 +19,10 @@ import { SistemaPlanetarioInfoService } from 'src/app/services/sistema-planetari
 export class GalaxiaComponent {
   sistemaPlanetario: SistemaPlanetario = new SistemaPlanetario();
   sistemaPlanetarioInfo: SistemaPlanetarioInfo = new SistemaPlanetarioInfo();
+  categoriaUsuarioId = '';
+  popUpNinos = false;
+  popUpJovenes = false;
+  popUpAdultos = false;
 
   constructor(
     private router: Router,
@@ -114,6 +118,15 @@ export class GalaxiaComponent {
     }, tiempo);
   };
 
+  linkPlaneta() {
+    this.activedRoute.paramMap.subscribe((params) => {
+      const categoriaUsuarioId = params.get('categoria-usuario-id');
+      if (categoriaUsuarioId) {
+        this.router.navigate(['/planeta/' + this.sistemaPlanetario.id + '/' + categoriaUsuarioId]); 
+      }
+    });
+  }
+
   private animate() {
     this.renderer.render(this.scene, this.camera);
     requestAnimationFrame(this.animate.bind(this));
@@ -127,7 +140,7 @@ export class GalaxiaComponent {
     });
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight - 4);
+    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
 
     createStars(this.scene);
 
@@ -143,6 +156,8 @@ export class GalaxiaComponent {
     this.startRenderingLoop();
     this.activedRoute.paramMap.subscribe((params) => {
       const galaxiaId = params.get('galaxia-id');
+      this.categoriaUsuarioId = String(params.get('categoria-usuario-id'));
+      this.getPopUp();
       if (galaxiaId) {
         this.sistemaPlanetarioService
           .getByGalaxia(galaxiaId)
@@ -151,7 +166,7 @@ export class GalaxiaComponent {
               this.sistemaPlanetario = sistemaPlanetario;
               console.log(sistemaPlanetario.id);
               this.sistemaPlanetarioInfoService
-              .getBySistemaPlanetarioAndCategoriaUsuario(sistemaPlanetario.id, '653822e8192629765704cb68')
+              .getBySistemaPlanetarioAndCategoriaUsuario(this.sistemaPlanetario.id, this.categoriaUsuarioId)
               .subscribe(
                 (sistemaPlanetarioInfo) => this.sistemaPlanetarioInfo = sistemaPlanetarioInfo
               )
@@ -159,6 +174,12 @@ export class GalaxiaComponent {
           );
       }
     });
+  }
+
+  private getPopUp() {
+    this.popUpNinos = this.categoriaUsuarioId == '653822ca192629765704cb64';
+    this.popUpJovenes = this.categoriaUsuarioId == '653822d9192629765704cb66';
+    this.popUpAdultos = this.categoriaUsuarioId == '653822e8192629765704cb68';
   }
 
   showDiv() {

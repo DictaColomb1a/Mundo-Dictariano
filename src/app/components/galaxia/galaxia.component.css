@@ -124,7 +124,44 @@ div.capa{
     margin: 13px;
     width: 30%;
     height: 370px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    display: flex;
 }
+
+div.capa::-webkit-scrollbar {
+    width: 4px;     /* Tamaño del scroll en vertical */
+    height: 4px;
+    display: none;
+       /* Tamaño del scroll en horizontal */ /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+div.capa::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+div.capa::-webkit-scrollbar-thumb:hover {
+    background: rgb(15, 15, 15);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+div.capa::-webkit-scrollbar-thumb:active {
+    background-color: rgb(38, 39, 39);
+}
+div.capa::-webkit-scrollbar-track {
+    background: rgb(28, 28, 28);
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+div.capa::-webkit-scrollbar-track:hover,
+div.capa::-webkit-scrollbar-track:active {
+  background: #000000;
+}
+
 div.capa.adultos{
     background: rgb(20, 20, 20);
     border:solid 0.25px rgb(97, 97, 97);

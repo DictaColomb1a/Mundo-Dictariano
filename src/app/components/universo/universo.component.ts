@@ -1,11 +1,8 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import * as three from 'three';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { createStars } from 'src/app/commons/stars';
-import {OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 @Component({
   selector: 'app-universo',
@@ -13,7 +10,10 @@ import {OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
   styleUrls: ['./universo.component.css'],
 })
 export class UniversoComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router, 
+    private activedRoute: ActivatedRoute
+  ) {}
 
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
@@ -66,7 +66,7 @@ export class UniversoComponent {
     this.camera.position.y = 1.2;
     this.camera.lookAt(0, 0, 0);
 
-    if (window.innerWidth < 800 && window.innerWidth > 350) {
+    if (window.innerWidth < 1000 && window.innerWidth > 350) {
       this.camera.lookAt(0, 0, 0);
       this.camera.position.z = 3;
     } else if (window.innerWidth <= 350 && window.innerWidth > 150) {
@@ -147,30 +147,26 @@ export class UniversoComponent {
     );
 
     galaxia.rotation.x = -1.7;
-
     galaxia.scale.x = 0.5;
     galaxia.scale.y = 0.5;
+    galaxia.position.x = -1;
 
     galaxiaAzul.scale.x = 0.5;
     galaxiaAzul.scale.y = 0.5;
-
-    galaxiaVerde.scale.x = 0.5;
-    galaxiaVerde.scale.y = 0.5;
-
-    galaxiaAmarilla.scale.x = 0.5;
-    galaxiaAmarilla.scale.y = 0.5;
-
-    galaxia.position.x = -1;
     galaxiaAzul.position.x = 1;
     galaxiaAzul.rotation.x = -1.7;
 
+    galaxiaVerde.scale.x = 0.5;
+    galaxiaVerde.scale.y = 0.5;
     galaxiaVerde.position.z = -0.5;
     galaxiaVerde.rotation.x = -1.7;
 
+    galaxiaAmarilla.scale.x = 0.5;
+    galaxiaAmarilla.scale.y = 0.5;
     galaxiaAmarilla.position.z = 0.5;
     galaxiaAmarilla.rotation.x = -1.7;
 
-    if (window.innerWidth < 800 && window.innerWidth > 350) {
+    if (window.innerWidth < 1000 && window.innerWidth > 350) {
 
       galaxia.position.y = 0.1;
       galaxia.position.x = 0;
@@ -181,15 +177,15 @@ export class UniversoComponent {
       galaxia.scale.y = 0.6;
 
       galaxiaAzul.position.x = 0;
-      galaxiaAzul.position.y = -0.5;
+      galaxiaAzul.position.y = -1.3;
       galaxiaAzul.position.z = 0;
-      galaxiaAzul.rotation.x = -1.7;
-
-      galaxiaAzul.scale.x = 0.6;
-      galaxiaAzul.scale.y = 0.6;
-
+      galaxiaAzul.rotation.x = -1.9;
+      
+      galaxiaAzul.scale.x = 0.75;
+      galaxiaAzul.scale.y = 0.75;
+      
       galaxiaVerde.position.x = 0;
-      galaxiaVerde.position.y = -1.3;
+      galaxiaVerde.position.y = -0.5;
       galaxiaVerde.position.z = 0;
       galaxiaVerde.rotation.x = -1.7;
 
@@ -197,16 +193,17 @@ export class UniversoComponent {
       galaxiaVerde.scale.y = 0.6;
 
       galaxiaAmarilla.position.x = 0;
-      galaxiaAmarilla.position.y = -1.8;
+      galaxiaAmarilla.position.y = -2.2;
       galaxiaAmarilla.position.z = 0;
-      galaxiaAmarilla.rotation.x = -1.7;
+      galaxiaAmarilla.rotation.x = -2.05;
 
-      galaxiaAmarilla.scale.x = 0.6;
-      galaxiaAmarilla.scale.y = 0.6;
+      galaxiaAmarilla.scale.x = 0.73;
+      galaxiaAmarilla.scale.y = 0.73;
 
-    } else if (window.innerWidth <= 350 && window.innerWidth > 150) {
+    } else if (window.innerWidth <= 350 && window.innerWidth > 50) {
 
       galaxia.position.x = 0;
+
       galaxiaAzul.position.x = 0;
       galaxiaAzul.rotation.x = -1.7;
 
@@ -214,6 +211,8 @@ export class UniversoComponent {
       galaxiaVerde.rotation.x = -1.7;
 
       galaxiaAmarilla.position.z = 0;
+      galaxiaAmarilla.position.x = 0;
+      galaxiaAmarilla.position.y = 0;
       galaxiaAmarilla.rotation.x = -1.7;
 
     } else if (this.canvas.clientWidth <= 400) {
@@ -224,11 +223,8 @@ export class UniversoComponent {
       galaxia,
       galaxiaAzul,
       galaxiaVerde,
-      galaxiaVerde,
       galaxiaAmarilla
-    );
-
-    
+    );    
 
     function animate() {
       requestAnimationFrame(animate);
@@ -241,7 +237,22 @@ export class UniversoComponent {
     animate();
   }
 
-   
+
+  linkGalaxia(galaxia: number) {
+    const galaxias = [
+      '65319cbe9114dd8ae873cca6',
+      '65319cd29114dd8ae873cca8',
+      '65319cde9114dd8ae873ccaa',
+      '6531b4e19114dd8ae873ccb6'
+    ];
+
+    this.activedRoute.paramMap.subscribe((params) => {
+      const categoriaUsuarioId = params.get('categoria-usuario-id');
+      if (categoriaUsuarioId) {
+        this.router.navigate(['/galaxia/' + galaxias[galaxia - 1] + '/' + categoriaUsuarioId]); 
+      }
+    });
+  }
 
   private startRenderingLoop() {
     this.renderer = new three.WebGLRenderer({
@@ -253,10 +264,9 @@ export class UniversoComponent {
     this.animate();
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setPixelRatio(devicePixelRatio);
-    this.renderer.setSize(window.innerWidth, window.innerHeight - 4.5);
+    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
 
     createStars(this.scene);
-    var controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     let component: UniversoComponent = this;
     (function render() {
