@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="main-container">
   <div class="canvas">
     <canvas #canvas class="canvas"></canvas>
@@ -67,7 +68,7 @@
             </div>
           </div>
           <div class="divboton">
-            <button class="supbutton adultos">
+            <button class="supbutton adultos" [routerLink]="['/landing']">
               <span class="supbuttonspan adultos">Quiero Aprender</span>
             </button>
           </div>
@@ -102,7 +103,7 @@
           </div>
         </div>
         <div class="divboton">
-          <button class="supbutton jovenes">
+          <button class="supbutton jovenes" [routerLink]="['/landing']">
             <span class="supbuttonspan jovenes">Quiero Aprender</span>
           </button>
         </div>
@@ -139,7 +140,7 @@
           </div>
         </div>
         <div class="divboton">
-          <button class="supbutton ninos">
+          <button class="supbutton ninos" [routerLink]="['/landing']">
             <span class="supbuttonspan ninos">Quiero Aprender</span>
           </button>
         </div>

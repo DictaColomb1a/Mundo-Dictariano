@@ -384,7 +384,7 @@ div.capa.ninos{
     }
     100%{
 
-        width: 50%;
+        width: var(--nivel);
     }
 }
 button.supbutton{

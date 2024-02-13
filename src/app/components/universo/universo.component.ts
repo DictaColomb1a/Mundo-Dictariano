@@ -62,8 +62,8 @@ export class UniversoComponent {
 
     console.log(window.scrollY);
 
-    this.camera.position.z = 2;
-    this.camera.position.y = 1.2;
+    this.camera.position.z = 2.1;
+    this.camera.position.y = 1;
     this.camera.lookAt(0, 0, 0);
 
     if (window.innerWidth < 1000 && window.innerWidth > 350) {
@@ -168,7 +168,7 @@ export class UniversoComponent {
 
     if (window.innerWidth < 1000 && window.innerWidth > 350) {
 
-      galaxia.position.y = 0.1;
+      galaxia.position.y = 0.2;
       galaxia.position.x = 0;
       galaxia.position.z = 0;
       galaxia.rotation.x = -1.6;
@@ -177,28 +177,28 @@ export class UniversoComponent {
       galaxia.scale.y = 0.6;
 
       galaxiaAzul.position.x = 0;
-      galaxiaAzul.position.y = -1.3;
+      galaxiaAzul.position.y = -0.9;
       galaxiaAzul.position.z = 0;
-      galaxiaAzul.rotation.x = -1.9;
+      galaxiaAzul.rotation.x = -1.75;
       
-      galaxiaAzul.scale.x = 0.75;
-      galaxiaAzul.scale.y = 0.75;
+      galaxiaAzul.scale.x = 0.6;
+      galaxiaAzul.scale.y = 0.6;
       
       galaxiaVerde.position.x = 0;
-      galaxiaVerde.position.y = -0.5;
+      galaxiaVerde.position.y = -0.3;
       galaxiaVerde.position.z = 0;
-      galaxiaVerde.rotation.x = -1.7;
+      galaxiaVerde.rotation.x = -1.65;
 
       galaxiaVerde.scale.x = 0.6;
       galaxiaVerde.scale.y = 0.6;
 
       galaxiaAmarilla.position.x = 0;
-      galaxiaAmarilla.position.y = -2.2;
+      galaxiaAmarilla.position.y = -1.6;
       galaxiaAmarilla.position.z = 0;
-      galaxiaAmarilla.rotation.x = -2.05;
+      galaxiaAmarilla.rotation.x = -1.9;
 
-      galaxiaAmarilla.scale.x = 0.73;
-      galaxiaAmarilla.scale.y = 0.73;
+      galaxiaAmarilla.scale.x = 0.6;
+      galaxiaAmarilla.scale.y = 0.6;
 
     } else if (window.innerWidth <= 350 && window.innerWidth > 50) {
 

@@ -50,7 +50,7 @@ export class GalaxiaComponent {
   private renderer!: three.WebGLRenderer;
   private scene!: three.Scene;
 
-  public divpopup = false;
+  public divpopup = true;
   public divfijo = false;
 
   private async createScene() {
@@ -76,8 +76,8 @@ export class GalaxiaComponent {
       this.farClippingPlane
     );
 
-    this.camera.position.z = 2.5;
-    this.camera.position.y = 1.2;
+    this.camera.position.z = 3.2;
+    this.camera.position.y = 1.6;
     this.camera.lookAt(0, 0, 0);
 
     if (window.innerWidth <= 950 && window.innerWidth > 300) {
@@ -93,7 +93,7 @@ export class GalaxiaComponent {
   }
 
   private getAspectRatio() {
-    var aspecto = window.innerWidth / window.innerHeight;
+    var aspecto = 1.5;
 
     return aspecto;
   }

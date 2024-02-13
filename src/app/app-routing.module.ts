@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UniversoComponent } from './components/universo/universo.component';
 import { GalaxiaComponent } from './components/galaxia/galaxia.component';
 import { PlanetaComponent } from './components/planeta/planeta.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,12 @@ const routes: Routes = [
   {
     path: 'planeta/:sistema-planetario-id/:categoria-usuario-id',
     component: PlanetaComponent
-  }
+  },
+  {
+    path: 'landing',
+    component: LandingComponent
+  },
+  
   
 ];
 

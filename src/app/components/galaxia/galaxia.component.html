@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="main-container">
     <div class="canvas">
       <canvas #canvas class="canvas"></canvas>
@@ -6,11 +7,7 @@
     <div class="divspan">
       <h2><p id="maquina1" class="span"></p></h2>
     </div>
-    <div class="divboton">
-      <button (click)="showDiv()" class="supbutton basico">¡QUIERO SABER MÁS!</button>  
-    </div>
     <div class="divpopup">
-    
         <div *ngIf="divpopup && popUpAdultos" class="capa adultos">
           <div>
             <div *ngIf="sistemaPlanetario" class="scroll">

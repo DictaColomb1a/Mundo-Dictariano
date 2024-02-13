@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UniversoComponent } from './components/universo/universo.component';
 import { GalaxiaComponent} from './components/galaxia/galaxia.component';
 import { PlanetaComponent } from './components/planeta/planeta.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PlanetaComponent } from './components/planeta/planeta.component';
     HomeComponent,
     UniversoComponent,
     GalaxiaComponent,
-    PlanetaComponent
+    PlanetaComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

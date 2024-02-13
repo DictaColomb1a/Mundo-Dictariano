@@ -15,11 +15,11 @@
 }
 .canvas{
     width: 100%;
-    height: 100%;
+    height: 1200px;
     align-items: center;
 }
 .divspan{
-    padding-top: 7%;
+    padding-top: 13%;
 }
 .divboton{
     text-align: center;
@@ -86,14 +86,14 @@
 
 
 .divboton{
-    padding-top: 5.5%;
+    padding-top: 9%;
     display: block;
 }
 .div23{
     display: flex;
 }
 .divboton2{
-    padding-top: 1.5%;
+    padding-top: 2%;
     padding-inline-start: 10px;
     width: 100%;
     vertical-align: middle;
@@ -102,6 +102,7 @@
     display: flex;
 }
 .divboton3{
+    padding-top: 1%;
     padding-inline-end: 8px;
     width: 100%;
     vertical-align: middle;
@@ -110,6 +111,7 @@
     display: flex;
 }.divboton4{
     width: 100%;
+    padding-top: 1.5%;
     justify-content: center;
     text-align: center;
     display: flex;
@@ -183,7 +185,7 @@
 @media(max-width: 500px) {
     .canvas{
         width: 100%;
-        height: 1200px;
+        height: 1400px;
     }
     footer .footerp.mediano{
         font-size: 10px;
@@ -240,19 +242,19 @@
         display: flow-root;
     }
     .divboton{
-        margin-top: 20%;
+        margin-top: 30%;
     }
     .divboton2{
         padding-inline-start: 0;
-        margin-top: 40%;
+        margin-top: 45%;
         display: flex;
     }
     .divboton3{
-        margin-top: 47%;
+        margin-top: 45%;
         display: flex;
         padding-inline-end: 0;
     }.divboton4{
-        margin-top: 40%;
+        margin-top: 45%;
         display: flex;
     }
     .botongalaxia1{
