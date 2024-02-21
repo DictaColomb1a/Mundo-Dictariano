@@ -1,0 +1,180 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+  <div class="canvas">
+    <canvas #canvas class="canvas"></canvas>
+  </div>
+  <div class="buttonuniverso">
+    <div class="divpopup">
+      <div class="capa adultos" *ngIf="planetaInfo && popUpAdultos">
+        <div id="context" class="divcontext adultos">
+          <p>{{ planetaInfo.planeta }}</p>
+        </div>
+        <div id="context" class="divcontext adultos">
+          <p>{{ planetaInfo.descripcion }}</p>
+        </div>
+        <div id="context" class="divcontext adultos">
+          <div id="habilidades" class="habilidades">
+            <p>PELIGROS</p>
+            <br />
+
+            <p>{{ planetaInfo.atributos[0].atributo }}</p><br>
+            <div class="cont45">
+              <div class="skills html" [style.--nivel.%]="planetaInfo.atributos[0].nivel">
+                {{ planetaInfo.atributos[0].nivel }}%
+              </div>
+            </div>
+
+            <br><p>{{ planetaInfo.atributos[1].atributo }}</p><br>
+            <div class="cont46">
+              <div class="skills2 html" [style.--nivel.%]="planetaInfo.atributos[1].nivel">
+                {{ planetaInfo.atributos[1].nivel }}%
+              </div>
+            </div>
+
+            <div class="divdash">
+              <div class="divdashboard">
+                <p>{{ planetaInfo.atributos[2].atributo }}</p><br>
+                <div class="cont466">
+                  <div
+                    class="skills22 htmll"
+                    [style.--nivel.%]="planetaInfo.atributos[2].nivel"
+                  >
+                    {{ planetaInfo.atributos[2].nivel }}%
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="divdashboard">
+                <p>{{ planetaInfo.atributos[1].atributo }}</p>
+                <div class="progressbar">
+                  <svg class="progressbar__svg">
+                    <circle
+                      cx="80"
+                      cy="80"
+                      r="50"
+                      class="progressbar__svg-circle circle-html shadow-html"
+                    ></circle>
+                  </svg>
+                  <span class="progressbar__text shadow-html" [style.--nivel.%]="planetaInfo.atributos[1].nivel">{{ planetaInfo.atributos[1].nivel }}%</span>
+                </div>
+              </div> -->
+
+              <!-- <div class="divdashboard">
+                <p>{{ planetaInfo.atributos[2].atributo }}</p>
+                <div class="half-arc" style="--percentage: 20%">
+                  <span class="label">{{ planetaInfo.atributos[2].nivel }}%</span>
+                </div>
+              </div> -->
+            </div>
+          </div>
+          <div class="divboton">
+            <button class="supbutton adultos" [routerLink]="['/landing']">
+              <span class="supbuttonspan adultos">Quiero Aprender</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="capa jovenes" *ngIf="planetaInfo && popUpJovenes">
+        <div class="divcontext jovenes">
+          <p>{{ planetaInfo.planeta }}</p>
+        </div>
+        <div class="divcontext jovenes">
+          <p>{{ planetaInfo.descripcion }}</p>
+        </div>
+        <div class="divcontext jovenes">
+          <div class="habilidades">
+            <p>PELIGROS</p>
+            <br />
+            <p>Toxicidad</p>
+            <div class="cont45 jovenes">
+              <div class="skills html jovenes">90%</div>
+            </div>
+            <br />
+            <p>Radiación</p>
+            <div class="cont45 jovenes treinta">
+              <div class="skills css jovenes">70%</div>
+            </div>
+            <br />
+            <p>Ácido</p>
+            <div class="cont45 jovenes cincuenta">
+              <div class="skills js jovenes">50%</div>
+            </div>
+          </div>
+        </div>
+        <div class="divboton">
+          <button class="supbutton jovenes" [routerLink]="['/landing']">
+            <span class="supbuttonspan jovenes">Quiero Aprender</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="capa ninos" *ngIf="planetaInfo && popUpNinos">
+        <div class="divcontext ninos uno">
+          <p>{{ planetaInfo.planeta }}</p>
+        </div>
+        <div class="divcontext ninos dos">
+          <p>{{ planetaInfo.descripcion }}</p>
+        </div>
+        <!--<div class="divcontext ninos tres">
+          <p>{{ planetaInfo.descripcion }}</p>
+        </div>-->
+        <div class="divcontext ninos">
+          <div class="habilidades">
+            <p>PELIGROS</p>
+            <br />
+            <p>Toxicidad</p>
+            <div class="cont45 ninos">
+              <div class="skills html ninos">90%</div>
+            </div>
+            <br />
+            <p>Radiación</p>
+            <div class="cont45 ninos treinta">
+              <div class="skills css ninos">70%</div>
+            </div>
+            <br />
+            <p>Ácido</p>
+            <div class="cont45 ninos cincuenta">
+              <div class="skills js ninos">50%</div>
+            </div>
+          </div>
+        </div>
+        <div class="divboton">
+          <button class="supbutton ninos" [routerLink]="['/landing']">
+            <span class="supbuttonspan ninos">Quiero Aprender</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="flechas">
+      <div class="divcontext flechaleft">
+        <div class="center-con">
+          <div class="roundizquierda">
+            <span class="spanflechaizquierda"></span>
+            <span class="spanflechaizquierda"></span>
+            <span class="spanflechaizquierda"></span>
+            <span class="spanflechaizquierda"></span>
+            <button
+              class="buttoninvisible"
+              (click)="anteriorPlaneta()"
+            ></button>
+          </div>
+        </div>
+      </div>
+      <div class="divcontext flecharight">
+        <div class="center-con">
+          <div class="roundderecha">
+            <span class="spanflechaderecha"></span>
+            <span class="spanflechaderecha"></span>
+            <span class="spanflechaderecha"></span>
+            <span class="spanflechaderecha"></span>
+            <button
+              class="buttoninvisible"
+              (click)="siguientePlaneta()"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

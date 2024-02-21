@@ -1,0 +1,235 @@
+.p {
+    font-family: "Space Mono", monospace;
+    color: rgb(255, 255, 255);
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+   margin: 0;
+}
+.canvas{
+    width: 100%;
+    height: 1200px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    
+}
+.divspan{
+    padding-top: 12%;
+}
+.divboton{
+    padding-top: 5%;
+    padding-bottom: 1%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+.divpopup{
+    padding-top: 10%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+    animation: aparece 15s;                             /* 1 parámetro (x / y) */         /* 1 parámetro */
+}
+@keyframes aparece {
+    0%{
+        display: none;
+    }
+    40%{
+        display: none;
+    }
+    50%{
+        display: none;
+    }
+    100%{
+        display: flex;
+    }
+    
+}
+.span{
+    display: inline;
+    font-family: "Space Mono",monospace;
+    font-size: 20px;
+    color: aliceblue;
+    border-right: 4px solid white;
+    margin: 0;
+    animation: blink .3s infinite;
+
+}
+
+@media(max-width: 450px) and (max-height: 950px) {
+
+    .canvas{
+        width: 100%;
+        height: 100%;
+    }
+    footer .footerp.mediano{
+        font-size: 10px;
+    }
+    footer .footerp.pequeño{
+        font-size: 6px;
+    }
+    .p {
+        font-size: 15px;
+        align-self: center;
+    }
+    .divspan{
+        padding-top: 20%;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 10%;
+        height: 50px;
+
+    }
+    .span {
+        font-size: 12px;
+    }
+    .divjustificado {
+        display: inline-block;
+    }
+    .divh2 {
+        justify-content: center;
+    }
+    .img{
+        width: calc(100%);
+        height: calc(100%);
+        animation: movimiento 5s;
+    }
+    
+    .div-in-line{
+        padding-bottom: 50%;
+    }
+    .divfooter{
+        width: 100%;
+    }
+    .divfijo{
+        margin-top: 180px;
+        background: linear-gradient(rgba(255, 214, 224, 0.819) 10%,rgba(144, 241, 239, 0.85) ) ;
+        box-shadow: 2px  2px 5px 1px rgb(255, 255, 255), -2px  -2px 5px 1px rgb(255, 255, 255) ;
+        padding: 15px;
+        width: 80%;
+        border-radius: 25px;
+        color: #ffffff;
+        text-align: center;
+    }
+}
+.buttonuniverso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+div.capa{
+    margin-bottom: 3px;
+    text-align: center;
+    border-radius: 25px;
+    padding: 5px;
+    margin: 13px;
+    width: 30%;
+    height: 100%;
+    display: flex;
+}
+
+div.capa.adultos{
+    background: rgb(20, 20, 20);
+    border:solid 0.25px rgb(97, 97, 97);
+    color: #ffffff;   
+}
+div.capa.jovenes{
+    border:solid 0.25px rgba(51,112,188,1);
+    background:rgb(20, 20, 20);
+    color: #ffffff;
+
+    
+}
+div.capa.ninos{
+    border:solid 0.25px rgb(245, 145, 14);
+    background: rgb(20, 20, 20) ;
+    color: #ffffff;
+}
+.divcontext{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.divcontext.adultos{
+    color: rgba(253,255,251,1);
+    background: rgba(20, 20, 20, 0.9) ; ;
+    border:solid 0.25px rgb(95, 95, 95);
+}
+.divcontext.jovenes{
+    color: rgb(39, 132, 246);
+    background: rgba(20, 20, 20, 0.9) ;
+    border:solid 0.25px rgba(51,112,188,1);
+  
+}
+.divcontext.ninos{
+    background: rgba(20, 20, 20, 0.9) ;
+    border:solid 0.25px rgba(51,112,188,1);
+    
+}
+.divcontext.ninos.uno{
+    color: rgb(245, 145, 14);
+    background:rgba(20, 20, 20, 0.9);
+    border:solid 0.25px rgb(245, 145, 14);
+}
+.divcontext.ninos.dos{
+    color: rgba(255,67,91,1);
+    background:rgba(20, 20, 20, 0.9);
+    border:solid 0.25px rgba(255,67,91,1);
+}
+.divcontext.ninos.tres{
+    color: rgb(67, 130, 255);
+    background:rgba(20, 20, 20, 0.9);
+    border:solid 0.25px rgb(67, 130, 255);
+}
+button.supbutton{
+    border: 0;
+    border-radius: 8px;
+    display: flex;
+    font-size: 20px;
+    padding: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+button.supbutton :active{
+    transform: scale(1);
+}
+button.supbutton.basico{
+    background-color: rgb(255, 72, 0);
+    color: #000000;
+    
+}
+
+button.supbutton.adultos{
+    background-color: #ffffff;
+    color: #000000;
+}
+
+button.supbutton.jovenes{
+    background-color: red;
+    color: #fff;
+}
+
+button.supbutton.ninos{
+    background-color:rgb(245, 145, 14);
+    color: #000000;
+}
+ 

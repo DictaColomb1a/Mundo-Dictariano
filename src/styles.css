@@ -1,1 +1,137 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0px;
+}
+
+/* .p {
+    font-family: "Space Mono", monospace;
+    color: rgb(255, 255, 255);
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.canvas{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+.divspan{
+    padding-top: 7%;
+}
+
+.divboton{
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.divpopup{
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.span{
+    display: inline;
+    font-family: "Space Mono",monospace;
+    font-size: 25px;
+    color: aliceblue;
+    border-right: 4px solid white;
+    margin: 0;
+    animation: blink .3s infinite;
+
+}
+
+.hexagon-button {
+    
+    background-color: #F7B300;
+    /*clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);*/
+ /*    clip-path: polygon(
+        25% 25%, /* arriba izquierda */
+  /*       75% 25%, /* arriba derecha */
+  /*       90% 50%,
+        75% 75%, /* abajo derecha */
+  /*       25% 75%, /* abajo izquierda */ /*
+        10% 50%
+        );
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+@media(max-width: 450px) and (max-height: 950px) {
+    .canvas{
+        width: 100%;
+        height: 100%;
+    }
+    footer .footerp.mediano{
+        font-size: 10px;
+    }
+    footer .footerp.pequeño{
+        font-size: 6px;
+    }
+    .p {
+        font-size: 15px;
+    }
+    .hexagon-button {
+        width: 150px; 
+        height: 70px;
+    }
+    .hexagon-button p {
+        font-size: 15px;
+    }
+    .span {
+        font-size: 15px;
+    }
+    .divjustificado {
+        display: inline-block;
+    }
+    .divh2 {
+        justify-content: center;
+    }
+    .img{
+        width: calc(100%);
+        height: calc(100%);
+        animation: movimiento 5s;
+    }
+    
+    .div-in-line{
+        padding-bottom: 50%;
+    }
+    .divfooter{
+        width: 100%;
+    }
+}
+.buttonuniverso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+    div#capa{
+    background: linear-gradient(rgba(35, 35, 35, 0.7) 20%, rgba(48, 47, 47, 0.6));
+    color: #ffffff;
+    margin-bottom: 3px;
+    text-align: center;
+    width: max-content;
+    } */

@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<div class="main-container">
+    <div class="canvas">
+      <canvas #canvas class="canvas"></canvas>
+    </div>
+  <div class="buttonuniverso">
+    <div class="divspan">
+      <h2><p id="maquina1" class="span"></p></h2>
+    </div>
+    <div class="divpopup">
+        <div *ngIf="divpopup && popUpAdultos" class="capa adultos">
+          <div>
+            <div *ngIf="sistemaPlanetario" class="scroll">
+              <div class="divcontext adultos">
+                <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.descripcion }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.reto }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.acierto }}</p>           
+              </div>
+              <div class="divcontext adultos">
+                <p>{{ sistemaPlanetarioInfo.riesgos }}</p>           
+              </div>
+            </div>
+            <div class="divboton">
+              <button class="supbutton adultos" (click)="linkPlaneta()">PRIMER PLANETA</button>
+            </div>
+
+          </div>
+          
+      
+      </div>
+   
+      
+      
+      <div *ngIf="divpopup && popUpJovenes" class="capa jovenes">
+        <div>
+          <div *ngIf="sistemaPlanetario">
+            <div class="divcontext jovenes">
+              <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.descripcion }}</p>            
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.reto }}</p>           
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.acierto }}</p>           
+            </div>
+            <div class="divcontext jovenes">
+              <p>{{ sistemaPlanetarioInfo.riesgos }}</p>            
+            </div>
+          </div>
+          <div class="divboton">
+            <button class="supbutton jovenes" (click)="linkPlaneta()">Primer Planeta</button>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="divpopup && popUpNinos" class="capa ninos">
+        <div>
+          <div *ngIf="sistemaPlanetario">
+            <div class="divcontext ninos uno">
+              <H3><p>{{ sistemaPlanetarioInfo.sistemaPlanetario | uppercase }}</p></H3>
+            </div>
+            <div class="divcontext ninos dos">
+              <p>{{ sistemaPlanetarioInfo.descripcion }}</p>          
+            </div>
+            <div class="divcontext ninos tres">
+              <p>{{ sistemaPlanetarioInfo.reto }}</p>            
+            </div>
+          </div>
+          <div class="divboton">
+            <button class="supbutton ninos" (click)="linkPlaneta()">Primer Planeta</button> 
+          </div>
+        </div>       
+      </div>
+    </div>
+    
+  </div>
+</div>

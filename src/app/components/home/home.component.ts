@@ -1,38 +1,20 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { PlanetaInfo } from 'src/app/models/planeta-info.model';
-import { Planeta } from 'src/app/models/planeta.model';
-import { PlanetaInfoService } from 'src/app/services/planeta-info.service';
-import { PlanetaService } from 'src/app/services/planeta.service';
 import * as three from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
+
 @Component({
   selector: 'app-home',
-  templateUrl: './planeta.component.html',
-  styleUrls: ['./planeta.component.css'],
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'], 
 })
-export class PlanetaComponent {
-  planetas: Planeta[] = [];
-  planetaInfo: PlanetaInfo = new PlanetaInfo();
-  index = 0;
-  categoriaUsuarioId = '';
-  popUpNinos = false;
-  popUpJovenes = false;
-  popUpAdultos = false;
-
-  constructor(
-    private activedRoute: ActivatedRoute,
-    private planetaService: PlanetaService,
-    private planetaInfoService: PlanetaInfoService
-  ) {}
-
+export class HomeComponent {
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
   @Input() public rotatioSpeedY: number = 0.005;
   @Input() public size: number = 200;
-  @Input() public texturePlanet: string = '/assets/img/MD2.webp';
+  @Input() public texturePlanet: string = '/assets/img/MD1.webp';
   @Input() public textureStar: string = '/assets/img/estrella.jpg';
   @Input() public textureText: string = '/assets/img/estrella.jpg';
   @Input() public objeto: string = 'assets/models/texto-rotandom.gltf';
@@ -44,15 +26,13 @@ export class PlanetaComponent {
   private light = new three.SpotLight(0xffffff, 20);
 
   private camera!: three.PerspectiveCamera;
-  public divpopup = false;
-  public divfijo = false;
 
   private get canvas(): HTMLCanvasElement {
     return this.canvasRef.nativeElement;
   }
 
   private loader = new three.TextureLoader();
-  private geometrysphere = new three.SphereGeometry(0.5, 100, 100);
+  private geometrysphere = new three.SphereGeometry(0.9, 100, 100);
   private materialsphere = new three.MeshBasicMaterial({
     map: this.loader.load(this.texturePlanet),
   });
@@ -62,7 +42,6 @@ export class PlanetaComponent {
   );
 
   private renderer!: three.WebGLRenderer;
-
   private scene!: three.Scene;
 
   private starsArray: {
@@ -73,7 +52,6 @@ export class PlanetaComponent {
   private starVelocities: three.Vector3[] = [];
 
   private async createScene() {
-    this.sphere.position.x = 1.05;
     this.scene = new three.Scene();
     this.scene.add(this.sphere);
     this.scene.add(this.light);
@@ -89,21 +67,79 @@ export class PlanetaComponent {
     );
 
     if (this.canvas.clientWidth > 950) {
-      this.camera.position.z = 4;
-    } else if (this.canvas.clientWidth < 950 && this.canvas.clientWidth > 400) {
+      this.camera.position.z = 3;
+    } else if (
+      this.canvas.clientWidth <950 &&
+      this.canvas.clientWidth > 400
+    ) {
       this.camera.position.z = 5;
     } else if (this.canvas.clientWidth <= 400) {
       this.camera.position.z = 6;
     }
+    this.maquinaEscribir(
+      100,
+      ' ANTICIPATE Y ENFRENTA LOS DESAFIOS DE LA ERA DIGITAL.                     '
+    );
+   /*  this.onWindowResize(); */
   }
 
   private getAspectRatio() {
-    return 1.90;
+    return this.canvas.clientWidth / this.canvas.clientHeight;
   }
+  /* private onWindowResize() {
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(window.innerWidth, window.innerHeight);
+} */
+
+
+  private maquinaEscribir = (tiempo: number, text: string) => {
+    let maquina = document.querySelector('#maquina1') as HTMLElement;
+    const characters = text.split('');
+    let i = 0;
+    let escribir = setInterval(function () {
+      if (characters[i] === '*') {
+        maquina.innerHTML += '</br>';
+      } else {
+        maquina.innerHTML += characters[i];
+      }
+
+      if (i === characters.length) {
+        maquina.innerHTML = '';
+        i = 0;
+      }
+
+      i++;
+    }, tiempo);
+  };
 
   private animationPlanet() {
     this.sphere.rotation.y += this.rotatioSpeedY;
   }
+
+  private gltfLoader = new GLTFLoader().load(
+    'assets/models/texto-rotandom.gltf',
+    (gltf) => {
+      const texto = gltf.scene;
+
+      gltf.scene.position.x = 0.022;
+      gltf.scene.position.y = -0.04;
+      gltf.scene.position.z = 0.3;
+      gltf.scene.scale.x = 1;
+      gltf.scene.scale.y = 1;
+      gltf.scene.scale.z = 1;
+
+      this.scene.add(texto);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        gltf.scene.position.x += 0.0;
+        gltf.scene.position.z += 0.0;
+        gltf.scene.rotation.y += -0.005;
+      }
+      animate();
+    }
+  );
 
   private createStar(): {
     star: three.Mesh;
@@ -174,7 +210,7 @@ export class PlanetaComponent {
 
     this.createStars();
 
-    let component: PlanetaComponent = this;
+    let component: HomeComponent = this;
     (function render() {
       requestAnimationFrame(render);
 
@@ -183,68 +219,8 @@ export class PlanetaComponent {
     })();
   }
 
-  siguientePlaneta() {
-    if (this.index < this.planetas.length - 1) {
-      this.index = this.index + 1;
-    } else {
-      this.index = 0;
-    }
-    this.cargarInfo();
-  }
-
-  anteriorPlaneta() {
-    if (this.index == 0) {
-      this.index = this.planetas.length - 1;
-    } else if (this.index < this.planetas.length) {
-      this.index = this.index - 1;
-    }
-    this.cargarInfo();
-  }
-
-  cargarInfo() {
-    this.planetaInfoService
-      .getByPlanetaAndCategoriaUsuario(
-        this.planetas[this.index].id,
-        this.categoriaUsuarioId
-      )
-      .subscribe((planetaInfo) => {
-        this.planetaInfo = planetaInfo;
-      });
-  }
-
   ngAfterViewInit() {
-    console.log(this.index);
     this.createScene();
     this.startRenderingLoop();
-    this.activedRoute.paramMap.subscribe((params) => {
-      const sistemaPlanetarioId = params.get('sistema-planetario-id');
-      this.categoriaUsuarioId = String(params.get('categoria-usuario-id'));
-
-      this.getPopUp();
-
-      if (sistemaPlanetarioId) {
-        this.planetaService
-          .getBySistemaPlanetario(sistemaPlanetarioId)
-          .subscribe((planetas) => {
-            this.planetas = planetas;
-            console.log(this.planetas);
-            this.cargarInfo();
-          });
-      }
-    });
-  }
-
-  private getPopUp() {
-    this.popUpNinos = this.categoriaUsuarioId === '653822ca192629765704cb64';
-    this.popUpJovenes = this.categoriaUsuarioId === '653822d9192629765704cb66';
-    this.popUpAdultos = this.categoriaUsuarioId === '653822e8192629765704cb68';
-  }
-
-  showDiv() {
-    if (this.canvas.clientWidth > 950) {
-      this.divpopup = !this.divpopup;
-    } else {
-      this.divfijo = !this.divfijo;
-    }
   }
 }

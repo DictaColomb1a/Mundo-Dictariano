@@ -1,0 +1,75 @@
+<script
+  type="module"
+  src="/src/app/components/planeta/planeta.component.ts"
+></script>
+<app-navbar></app-navbar>
+<div class="main-container">
+  <div class="absolute">
+    <canvas #canvas class="canvas"></canvas>
+  </div>
+  <div class="container cont">
+    <div class="divwidth">
+      <div class="container divjustificado">
+        <div class="divh2">
+          <h1><p id="maquina1" class="span"></p></h1>
+        </div>
+      </div>
+      <div class="container divjustificado">
+        <div class="div-in-line">
+          <img id="imagen" src="assets/img/cohete.png" alt="" class="img" />
+          <div>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
+          </div>
+          <p class="p">NIÑOS</p>
+          <div class="divjustificado">
+            <button class="supbutton basico" [routerLink]="['/universo/653822ca192629765704cb64']"><p>DESPEGAR</p></button>
+          </div>
+        </div>
+        <div class="div-in-line">
+          <img src="assets/img/cohete.png" alt="" class="img" />
+          <div>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
+          </div>
+          <p class="p">JOVENES</p>
+          <div class="divjustificado">
+            <button class="supbutton basico" [routerLink]="['/universo/653822d9192629765704cb66']"><p>DESPEGAR</p></button>
+          </div>
+        </div>
+        <div class="div-in-line">
+          <img src="assets/img/cohete.png" alt="" class="img" />
+          <div>
+            <img src="assets/img/fuego3.png" alt="" class="imgfuego" />
+          </div>
+          <p class="p">PADRES</p>
+          <div class="divjustificado">
+            <button class="supbutton basico" [routerLink]="['/universo/653822e8192629765704cb68']"><p>DESPEGAR</p></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <footer>
+      <div class="container divjustificado">
+        <div class="divfooter">
+          <p class="footerp mediano">Información de la Empresa</p>
+          <p class="footerp pequeño">
+            Dicta Colombia brinda servicios para mejorar la educación en el
+            ámbito de la ciberseguridad en todo el mundo.
+          </p>
+        </div>
+        <div class="divfooter">
+          <p class="footerp mediano">Servicios de la Empresa</p>
+          <p class="footerp pequeño">
+            Cursos online<br /><br />Cursos Online <br /><br />
+            Cursos Online
+          </p>
+        </div>
+        <div class="divfooter">
+          <p class="footerp mediano">Contacto</p>
+          <p class="footerp pequeño">Contacto de la Empresa</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>

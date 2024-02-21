@@ -1,0 +1,811 @@
+:root {
+    --nivel: ;
+    --percentage: 20%;
+}
+
+.p {
+    font-family: "Space Mono", monospace;
+    color: rgb(255, 255, 255);
+    display: flex;
+    font-size: 30px;
+    justify-content: center;
+}
+
+.main-container{
+    width: 100%;
+    height: 100%;
+    background-image: url("src/assets/img/starsc.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+.canvas{
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    
+}
+
+.divcanvas2{
+    align-items: center;
+    justify-content: center;
+}
+.canvas2{
+    border: solid 1px blue;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    
+}
+.divspan{
+    padding-top: 7%;
+}
+.divboton{
+    padding-top: 5%;
+    padding-bottom: 1%;
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+}
+.divpopup{
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    display: flex;
+    padding-top: 7%;                             /* 1 parámetro (x / y) */         /* 1 parámetro */
+}
+.span{
+    display: inline;
+    font-family: "Space Mono",monospace;
+    font-size: 20px;
+    color: aliceblue;
+    border-right: 4px solid white;
+    margin: 0;
+    animation: blink .3s infinite;
+
+}
+
+@media(max-width: 450px) and (max-height: 950px) {
+
+    .canvas{
+        width: 100%;
+        height: 100%;
+    }
+    footer .footerp.mediano{
+        font-size: 10px;
+    }
+    footer .footerp.pequeño{
+        font-size: 6px;
+    }
+    .p {
+        font-size: 15px;
+        align-self: center;
+    }
+    .divspan{
+        padding-top: 20%;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 10%;
+        height: 50px;
+
+    }
+    .span {
+        font-size: 12px;
+    }
+    .divjustificado {
+        display: inline-block;
+    }
+    .divh2 {
+        justify-content: center;
+    }
+    .img{
+        width: calc(100%);
+        height: calc(100%);
+        animation: movimiento 5s;
+    }
+    
+    .div-in-line{
+        padding-bottom: 50%;
+    }
+    .divfooter{
+        width: 100%;
+    }
+    .divfijo{
+        margin-top: 180px;
+        background: linear-gradient(rgba(255, 214, 224, 0.819) 10%,rgba(144, 241, 239, 0.85) ) ;
+        box-shadow: 2px  2px 5px 1px rgb(255, 255, 255), -2px  -2px 5px 1px rgb(255, 255, 255) ;
+        padding: 15px;
+        width: 80%;
+        border-radius: 25px;
+        color: #ffffff;
+        text-align: center;
+    }
+}
+.buttonuniverso{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+div.capa{
+    margin-bottom: 3px;
+    text-align: center;
+    border-radius: 25px;
+    margin: 5px;
+    height: 490px;
+    position: absolute;
+    top: 130px;
+    left: 30px;
+    width: 35%;
+    /* height: fit-content; */
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+div.capa::-webkit-scrollbar {
+    width: 4px;     /* Tamaño del scroll en vertical */
+    height: 4px;
+    display: none;
+       /* Tamaño del scroll en horizontal */ /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+div.capa::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+div.capa::-webkit-scrollbar-thumb:hover {
+    background: rgb(15, 15, 15);
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+div.capa::-webkit-scrollbar-thumb:active {
+    background-color: rgb(38, 39, 39);
+}
+div.capa::-webkit-scrollbar-track {
+    background: rgb(28, 28, 28);
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+div.capa::-webkit-scrollbar-track:hover,
+div.capa::-webkit-scrollbar-track:active {
+  background: #000000;
+}
+div.capa.adultos{
+    background: rgb(20, 20, 20);
+    border:solid 0.25px rgb(95, 95, 95);
+    color: #ffffff;
+}
+div.capa.jovenes{
+    border:solid 0.25px rgb(51,112,188);
+    background:rgb(20, 20, 20);
+    color: #ffffff;
+}
+div.capa.ninos{
+    border:solid 0.25px rgb(245, 145, 14);
+    background: rgb(20, 20, 20) ;
+    color: #ffffff;
+}
+.divcontext{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+.divcontext.adultos{
+    color: rgba(253,255,251,1);
+    background: rgba(20, 20, 20, 1) ;
+    border:solid 0.25px rgb(95, 95, 95);
+
+  
+}
+.divcontext.jovenes{
+    color: rgb(39, 132, 246);
+    background: rgba(20, 20, 20, 1) ;
+    border:solid 0.25px rgb(51,112,188);
+   
+}
+.divcontext.ninos{
+    background: rgba(20, 20, 20, 1) ;
+   
+}
+.divcontext.ninos.uno{
+    color: rgb(56, 187, 4);
+    background:rgb(20, 20, 20);
+    border:solid 0.25px rgb(56, 187, 4);
+}
+.divcontext.ninos.dos{
+    color: rgb(255,67,91);
+    background:rgb(20, 20, 20);
+    border:solid 0.25px rgb(255,67,91);
+}
+.divcontext.ninos.tres{
+    color: rgb(51,112,188);
+    background:rgb(20, 20, 20);
+    border:solid 0.25px rgb(51,112,188);
+}
+.habilidades{
+
+    width: 300px;
+    margin:auto;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    justify-items: center;
+
+}
+
+.cont45{
+    border-radius: 50px;
+    width: 100%;
+    height: 10%;
+    background-color: #b1adad;
+    
+
+}
+.cont46{
+    
+    width: 100%;
+    height: 15%;
+    background-color: #3b3b3b;
+}
+.cont45.jovenes{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(27, 86, 206);
+    
+
+}.cont45.jovenes.treinta{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(138, 174, 247);
+    
+    
+
+}.cont45.jovenes.cincuenta{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(191, 209, 244);
+}
+.cont45.ninos{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(150, 246, 112);
+    
+
+}.cont45.ninos.treinta{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(251, 129, 145);
+    
+
+
+}.cont45.ninos.cincuenta{
+
+    border-radius: 10px;
+    width: 100%;
+    height: 10%;
+    background-color: rgb(79, 123, 212);
+}
+.skills{
+    border-radius: 50px;
+    height: 25px;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+.skills2{
+    border-radius: 0px;
+    height: 15px;
+    text-align: right;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.html{
+    background-color: #ffffff;
+    animation: fillhtml 2s forwards;
+    color: #000000;
+
+}.html.jovenes{
+    background-color: rgb(138, 174, 247);
+    animation: fillhtml 2s forwards;
+    color: #000000;
+}
+.html.ninos{
+    background-color: rgb(56, 187, 4);
+    animation: fillhtml 3s delay 5s linear infinite;
+    color: #000000;
+}
+.css{
+    background-color:  rgb(93, 93, 93);
+    animation: fillcss 2s forwards;
+}
+.css.jovenes{
+    background-color:  rgb(3, 51, 147);
+    animation: fillcss 2s forwards;
+}
+.css.ninos{
+    background-color:  rgb(212, 55, 76);
+    animation: fillcss 2s forwards;
+}
+.js{
+    background-color:  rgb(58, 57, 57);
+    animation: filljs 2s forwards;
+}
+.js.jovenes{
+    background-color:  rgb(11, 39, 97);
+    animation: filljs 2s forwards;
+}
+.js.ninos{
+    background-color:  rgb(11, 39, 97);
+    animation: filljs 2s delay 5s infinite;
+}
+@keyframes fillhtml{
+    0%{
+        width: 0;
+    }
+    100%{
+
+        width: var(--nivel);;
+    }
+}
+@keyframes fillcss{
+    0%{
+        width: 0;
+    }
+    100%{
+
+        width: var(--nivel);
+    }
+}
+@keyframes filljs{
+    0%{
+        width: 0;
+    }
+    100%{
+
+        width: var(--nivel);
+    }
+}
+button.supbutton{
+    border: 0;
+    border-radius: 8px;
+    display: flex;
+    font-size: 20px;
+    padding: 6px;
+    cursor: pointer;
+    transition: .3s;
+}
+button.supbutton :active{
+    transform: scale(1);
+}
+button.supbutton.basico{
+    background-color: rgb(255, 72, 0);
+    color: #fff;
+    
+}
+
+button.supbutton.adultos{
+    margin-bottom:  26px;
+    background-color: rgb(255, 255, 255);
+    color: #000000;
+}
+
+button.supbutton.jovenes{
+    background-color: red;
+    color: #fff;
+}
+
+button.supbutton.ninos{
+    background-color: rgb(245, 145, 14);
+    color: #000000;
+}
+
+div.flechas{
+    position: absolute;
+    transform: translate(-50%,-50%) ;
+    top: 50%;
+    left: 67%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+H3{
+    text-transform: uppercase;
+}
+
+div.divcontext.flechaleft{
+    justify-content: left;
+    align-items: center;
+    margin-left: 10%;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+}
+div.divcontext.flecharight{
+    align-items: center;
+    justify-content: right;
+    margin-right: 10%;
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+}
+
+.roundderecha {
+    position: relative;
+    border: 3px solid rgb(95, 95, 95);
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.spanflechaderecha{
+    z-index: 1;
+    height: 3px;
+    margin:0.5px;
+    width: 15px;
+    background: white;
+    transition: 0.4s ease;
+}
+
+.spanflechaderecha:first-child {
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: 25%;
+    bottom: 35%;
+}
+
+.spanflechaderecha:nth-child(2) {
+    display: block;
+    position: absolute;
+    transform: rotate(-45deg);
+    right: 45%;
+    bottom: 35%;
+}
+
+.spanflechaderecha:nth-child(3) {
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 25%;
+    bottom: 54%;
+}
+
+.spanflechaderecha:nth-child(4) {
+    display: block;
+    position: absolute;
+    transform: rotate(45deg);
+    right: 45%;
+    bottom: 54%;
+}
+
+.roundderecha:hover .spanflechaderecha:nth-child(1) {
+    transform: rotate(-230deg);
+}
+
+.roundderecha:hover .spanflechaderecha:nth-child(2) {
+    transform: rotate(-230deg);
+}
+
+.roundderecha:hover .spanflechaderecha:nth-child(3) {
+    transform: rotate(225deg);
+}
+
+.roundderecha:hover .spanflechaderecha:nth-child(4) {
+    transform: rotate(225deg);
+}
+.roundizquierda {
+    position: relative;
+    border: 3px solid rgb(95, 95, 95);
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.spanflechaizquierda{
+    z-index: 1;
+    height: 3px;
+    margin:0.5px;
+    width: 15px;
+    background: #fff;
+    transition: 0.4s ease;
+}
+
+.spanflechaizquierda:first-child {
+    display: block;
+    position: absolute;
+    transform: rotate(-135deg);
+    left: 25%;
+    bottom: 35%;
+}
+
+.spanflechaizquierda:nth-child(2) {
+    display: block;
+    position: absolute;
+    transform: rotate(-135deg);
+    left: 45%;
+    bottom: 35%;
+}
+
+.spanflechaizquierda:nth-child(3) {
+    display: block;
+    position: absolute;
+    transform: rotate(135deg);
+    left: 25%;
+    bottom: 54%;
+}
+
+.spanflechaizquierda:nth-child(4) {
+    display: block;
+    position: absolute;
+    transform: rotate(135deg);
+    left: 45%;
+    bottom: 54%;
+}
+
+.roundizquierda:hover .spanflechaizquierda:nth-child(1) {
+    transform: rotate(-320deg);
+}
+
+.roundizquierda:hover .spanflechaizquierda:nth-child(2) {
+    transform: rotate(-320deg);
+}
+
+.roundizquierda:hover .spanflechaizquierda:nth-child(3) {
+    transform: rotate(320deg);
+}
+
+.roundizquierda:hover .spanflechaizquierda:nth-child(4) {
+    transform: rotate(320deg);
+}
+.buttoninvisible{
+    position: relative;
+    z-index: 999;
+    background: none;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+.divcon366{
+    display: flex;
+    margin-left: 15px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cont466{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #7e7e7e;
+    align-items: center;
+    justify-content: center;
+}
+
+.skills22{
+    border-radius: 50%;
+    height: 100px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
+
+.htmll{
+    background-color: #ffffff;
+    animation: fillhtml2 2s forwards;
+    color: #000000;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+    
+
+    @keyframes fillhtml2{
+        0%{
+            width: 0%;
+            height: 0%;
+        }
+        100%{
+    
+            width: var(--nivel);
+            height: var(--nivel);
+        }
+    }
+
+.divdash{
+    display: flex;
+    margin-top: 25px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+.divdashboard{
+    margin-top: 25px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+
+}.divdashboard.vertical{
+
+    align-items: center;
+    justify-content: center;
+}
+      
+      svg {
+        width: 114px;
+        height: 114px;
+      }
+      
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #0d0d0d;
+      }
+      
+      .container__progressbars {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+        min-width: 270px;
+        width: 100%;
+        min-height: 100%;
+      }
+      
+      .progressbar {
+        align-items: center;
+        justify-content: center;
+        width: 175px;
+        height: 175px;
+        transform: rotate(-90deg);
+      }
+      
+      .progressbar__svg {
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      .progressbar__svg-circle {
+        left: 0;
+        width: 40%;
+        height: 40%;
+        fill: none;
+        stroke-width: 10;
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+        stroke: white;
+        stroke-linecap: round;
+        position: absolute;
+        transform: translate(4%,4%);
+
+      }
+      
+      .shadow-html {
+        filter: drop-shadow(0 0 5px #ff6633);
+      }
+      
+      .circle-html {
+        -webkit-animation: anim_circle-html 5s ease-in-out forwards;
+                animation: anim_circle-html 5s ease-in-out forwards;
+      }
+      .progressbar__text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 0.25em 0.5em;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 0.25em;
+        transform: translate(-50%, -50%) rotate(90deg);
+      }
+      
+      @-webkit-keyframes anim_circle-html {
+        to {
+          stroke-dashoffset: 100%;
+        }
+      }
+      
+      @keyframes anim_circle-html {
+        from{
+            stroke-dashoffset: 280%;
+        }
+        to {
+          stroke-dashoffset: 100%;
+        }
+      }
+
+      .half-arc {
+        position: relative;
+        width: 200px;
+        height: 100px;
+        border-top-left-radius: 120px;
+        border-top-right-radius: 120px;
+        border-bottom: 0;
+        background: #ffffff;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .half-arc:before {
+        content: "";
+        position: absolute;
+        background-color: #ffffff;
+        display: block;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200%;
+        border-radius: 50%;
+        animation: nivels 5s ease-in-out forwards;
+        z-index: 1;
+        transform: rotate(270deg);
+    }
+    @keyframes nivels{
+
+        0%{  background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage=0)), #bbb 0);}
+        5%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 11), #bbb 0);}
+        15%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 10), #bbb 0);}
+        25%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 9), #bbb 0);}
+        35%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 8), #bbb 0);}
+        45%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 7), #bbb 0);}
+        55%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 6), #bbb 0);}
+        65%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 5), #bbb 0);}
+        70%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 4), #bbb 0);}
+        85%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 3), #bbb 0);}
+        100%{ background-image: conic-gradient(#9c27b0, #3f51b5 calc(var(--percentage) / 2), #bbb 0);}
+
+    }
+    
+    .half-arc:after {
+    
+        position: absolute;
+        background-color: #b1adad;
+        z-index: 2;
+        width: calc(100% - 32px);
+        height: calc(200% - 32px);
+        border-radius: 50%;
+        top: 16px;
+        left: 16px;
+    }
+    
+    .half-arc span {
+        color: #000000;
+        z-index: 3;
+        text-align: center;
+    }
+
+    
